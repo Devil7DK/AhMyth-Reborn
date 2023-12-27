@@ -1,0 +1,80 @@
+div.fui-Drawer.nav-drawer {
+    > header.fui-DrawerHeader {
+        padding: 0;
+        position: relative;
+
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+    }
+
+    > div.fui-DrawerBody {
+        display: flex;
+        flex-direction: column;
+
+        > div.fui-Divider {
+            flex-grow: unset;
+            margin-bottom: 0.5em;
+
+            &:not(:first-child) {
+                margin-top: 1em;
+            }
+        }
+
+        > button.fui-Button {
+            > span.fui-Button__icon {
+                margin-right: 0.8em;
+            }
+        }
+    }
+}
+
+div.main-app-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 1px;
+    overflow: hidden;
+
+    > div.navbar {
+        align-items: center;
+        display: flex;
+        padding: 0.5em 1em 0.5em 0.5em;
+        gap: 0.5em;
+
+        // Use background color from fluent UI theme
+        background-color: var(--colorNeutralBackground6);
+
+        > div.navbar-item {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    > div.main-scroll-container {
+        flex: 1;
+        overflow: auto;
+        padding: 1em;
+    }
+}
+
+div.theme-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+        color: var(--colorNeutralForeground2);
+
+        &.active {
+            color: var(--colorBrandForeground1);
+        }
+    }
+}

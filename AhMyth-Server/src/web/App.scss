@@ -6,5 +6,9 @@ div#root > div.fui-FluentProvider {
     bottom: 0;
 
     display: flex;
-    flex-direction: column;
+    overflow: hidden;
+}
+
+div.fill {
+    flex: 1;
 }

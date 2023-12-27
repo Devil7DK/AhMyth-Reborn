@@ -5,12 +5,13 @@ import {
     createDarkTheme,
     createLightTheme,
     FluentProvider,
-    Switch,
     type Theme,
 } from '@fluentui/react-components';
-import React, { useLayoutEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useLayoutEffect } from 'react';
 
 import { Pages } from './pages';
+import { useStore } from './store';
 
 const customTheme: BrandVariants = {
     10: '#020306',
@@ -42,14 +43,8 @@ const darkTheme: Theme = {
 darkTheme.colorBrandForeground1 = customTheme[110];
 darkTheme.colorBrandForeground2 = customTheme[120];
 
-export const App: React.FC = () => {
-    const [theme, setTheme] = useState(() =>
-        localStorage.getItem('theme') !== null
-            ? (localStorage.getItem('theme') as 'light' | 'dark')
-            : window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light',
-    );
+export const App: React.FC = observer(() => {
+    const { themeStore } = useStore();
 
     useLayoutEffect(() => {
         const preloader = document.getElementById('preloader');
@@ -64,19 +59,10 @@ export const App: React.FC = () => {
     }, []);
 
     return (
-        <FluentProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-            <Switch
-                checked={theme === 'dark'}
-                onChange={() => {
-                    setTheme(theme === 'dark' ? 'light' : 'dark');
-                    localStorage.setItem(
-                        'theme',
-                        theme === 'dark' ? 'light' : 'dark',
-                    );
-                }}
-            />
-
+        <FluentProvider
+            theme={themeStore.theme === 'dark' ? darkTheme : lightTheme}
+        >
             <Pages />
         </FluentProvider>
     );
-};
+});

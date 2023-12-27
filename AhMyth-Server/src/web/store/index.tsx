@@ -1,4 +1,3 @@
-import { makeAutoObservable } from 'mobx';
 import React, {
     createContext,
     type PropsWithChildren,
@@ -6,14 +5,13 @@ import React, {
     useMemo,
 } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+import { ThemeStore } from './ThemeStore';
+
 export class RootStore {
-    constructor() {
-        makeAutoObservable(this);
-    }
+    public themeStore = new ThemeStore();
 }
 
-const StoreContext = createContext({} satisfies RootStore);
+const StoreContext = createContext({} as unknown as RootStore);
 
 export const StoreProvider: React.FC<PropsWithChildren<unknown>> = ({
     children,
