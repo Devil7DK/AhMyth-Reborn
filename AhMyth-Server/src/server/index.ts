@@ -1,13 +1,25 @@
+import 'reflect-metadata';
+
+import { useContainer as useContainerClassValidator } from 'class-validator';
 import express, { type Application } from 'express';
 import expressStaticGzip from 'express-static-gzip';
 import { existsSync, readFileSync } from 'fs';
 import { createServer as createHttpServer } from 'http';
 import { createServer as createHttpsServer } from 'https';
 import { join, resolve } from 'path';
+import {
+    useContainer as useContainerRoutingControllers,
+    useExpressServer,
+} from 'routing-controllers';
+import Container from 'typedi';
 
 import { config } from './config';
+import * as controllers from './controllers';
 import { logger } from './logger';
 import { getPublicDir, timeConversion } from './utils/Common';
+
+useContainerClassValidator(Container);
+useContainerRoutingControllers(Container);
 
 logger.verbose(`Initializing express app in ${config.NODE_ENV} mode.`, {
     label: 'server',
@@ -41,7 +53,17 @@ function setupRoutes(): void {
         }),
     );
 
-    app.get('*', (req, res) => {
+    useExpressServer(app, {
+        routePrefix: '/api',
+        controllers: Object.values(controllers),
+    });
+
+    app.get('*', (req, res, next) => {
+        if (req.url.startsWith('/api')) {
+            next();
+            return;
+        }
+
         const encodings = req.header('Accept-Encoding');
 
         const index = join(publicDir, 'index.html');
