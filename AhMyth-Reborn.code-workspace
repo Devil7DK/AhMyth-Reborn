@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "AhMyth-Server-Electron"
+		},
+		{
+			"path": "AhMyth-Client"
+		},
+		{
+			"path": "AhMyth-Server"
+		}
+	],
+	"settings": {}
+}
