@@ -22,11 +22,7 @@
     "last 1 safari version"
   ],
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@fontsource/roboto": "^5.0.8",
-    "@mui/icons-material": "^5.15.2",
-    "@mui/material": "^5.15.2",
+    "@fluentui/react-components": "^9.43.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "dayjs": "^1.11.10",
