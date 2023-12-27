@@ -1,0 +1,15 @@
+{
+  "endOfLine": "lf",
+  "jsxSingleQuote": true,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "overrides": [
+    {
+      "files": ["*.json", "*.yml", "*.yaml", "*rc"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
