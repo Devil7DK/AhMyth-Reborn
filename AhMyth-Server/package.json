@@ -23,6 +23,11 @@
   ],
   "dependencies": {
     "@fluentui/react-components": "^9.43.3",
+    "@fluentui/react-icons": "^2.0.224",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "dayjs": "^1.11.10",
