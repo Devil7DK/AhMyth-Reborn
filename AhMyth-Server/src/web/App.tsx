@@ -10,6 +10,8 @@ import {
 } from '@fluentui/react-components';
 import React, { useLayoutEffect, useState } from 'react';
 
+import { Pages } from './pages';
+
 const customTheme: BrandVariants = {
     10: '#020306',
     20: '#0F1826',
@@ -73,6 +75,8 @@ export const App: React.FC = () => {
                     );
                 }}
             />
+
+            <Pages />
         </FluentProvider>
     );
 };
