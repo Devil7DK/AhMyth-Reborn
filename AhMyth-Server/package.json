@@ -1,0 +1,9 @@
+{
+  "name": "ahmyth-server",
+  "version": "1.0.0",
+  "description": "Rewrite of original electron app to be hosted as a remote web server with some added features",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Devil7DK/AhMyth-Reborn",
+  "license": "GPL-3.0",
+  "private": true
+}
