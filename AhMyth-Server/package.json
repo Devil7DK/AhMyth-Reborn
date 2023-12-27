@@ -7,21 +7,33 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only --no-notify src/server/index.ts",
+    "clean": "rimraf dist .parcel-cache",
+    "build:web": "parcel build --target web",
+    "build:server": "parcel build --target server --config \"@parcel/config-default\"",
+    "build": "npm run clean && npm run build:server && npm run build:web",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write ."
   },
+  "browserslist": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ],
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "envalid": "^8.0.0",
     "express": "^4.18.2",
     "express-static-gzip": "^2.1.7",
     "multer": "^1.4.5-lts.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.21.1",
@@ -31,6 +43,12 @@
     "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
+    "@parcel/compressor-brotli": "^2.10.3",
+    "@parcel/compressor-gzip": "^2.10.3",
+    "@parcel/config-default": "^2.10.3",
+    "@parcel/core": "^2.10.3",
+    "@parcel/fs": "^2.10.3",
+    "@parcel/transformer-sass": "^2.10.3",
     "@types/express": "^4.17.21",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.10.5",
@@ -47,7 +65,35 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "parcel": "^2.10.3",
+    "parcel-reporter-static-files-copy": "^1.5.3",
     "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "ts-node-dev": "^2.0.0",
     "typescript": "*"
-  }
+  },
+  "targets": {
+    "web": {
+      "source": "./src/web/index.html",
+      "context": "browser",
+      "distDir": "./dist/public",
+      "engines": {
+        "browsers": "last 2 chrome versions"
+      }
+    },
+    "server": {
+      "source": "./src/server/index.ts",
+      "context": "node",
+      "distDir": "./dist",
+      "scopeHoist": false,
+      "includeNodeModules": false,
+      "engines": {
+        "node": "18.x"
+      }
+    }
+  },
+  "staticFiles": [
+    {
+      "staticPath": "static"
+    }
+  ]
 }
