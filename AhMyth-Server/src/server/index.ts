@@ -45,6 +45,50 @@ function setupRoutes(): void {
     );
     app.use(express.json());
 
+    // Implement HTTP basic auth
+    app.use((req, res, next) => {
+        try {
+            const authorization = req.header('Authorization');
+
+            if (typeof authorization === 'string') {
+                const [type, credentials] = authorization.split(' ');
+
+                if (type === 'Basic' && typeof credentials === 'string') {
+                    const [username, password] = Buffer.from(
+                        credentials,
+                        'base64',
+                    )
+                        .toString('utf-8')
+                        .split(':');
+
+                    if (
+                        username.toLowerCase() ===
+                            config.AUTH_USERNAME.toLowerCase() ||
+                        password === config.AUTH_PASSWORD
+                    ) {
+                        next();
+                        return;
+                    }
+                }
+            }
+        } catch (error) {
+            logger.error(
+                `Error on HTTP basic auth! ${
+                    error instanceof Error ? error.message : (error as string)
+                }`,
+                {
+                    label: 'server',
+                    action: 'auth',
+                    error,
+                },
+            );
+        }
+
+        res.setHeader('WWW-Authenticate', "Basic realm='Secure Area'");
+
+        res.status(401).send('Unauthorized');
+    });
+
     app.use(
         '/',
         expressStaticGzip(publicDir, {
