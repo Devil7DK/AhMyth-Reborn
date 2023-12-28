@@ -46,4 +46,23 @@ export const config = cleanEnv(process.env, {
         default: 'database.sqlite',
         desc: 'The path to the SQLite database file.',
     }),
+    SOCKET_PORT: num({
+        default: 42474,
+        desc: 'The port to run the socket server on.',
+    }),
+    SOCKET_MAX_HTTP_BUFFER_SIZE: str({
+        default: '100mb',
+        desc: 'The maximum size of the HTTP buffer.',
+        example: '100mb, 1gb, 2kb, 3b',
+    }),
+    SOCKET_PING_INTERVAL: str({
+        default: '10s',
+        desc: 'How often to ping the clients.',
+        example: '10s, 1m, 2h',
+    }),
+    SOCKET_PING_TIMEOUT: str({
+        default: '10s',
+        desc: 'How long to wait for a ping response.',
+        example: '10s, 1m, 2h',
+    }),
 });

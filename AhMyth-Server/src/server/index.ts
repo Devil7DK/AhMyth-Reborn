@@ -13,10 +13,13 @@ import {
 } from 'routing-controllers';
 import Container from 'typedi';
 
+import { VictimStatus } from '../common/enums';
 import { config } from './config';
 import * as controllers from './controllers';
 import { setupDatabase } from './database';
+import { VictimEntity } from './entities';
 import { logger } from './logger';
+import { SocketService } from './services';
 import { getPublicDir, timeConversion } from './utils/Common';
 
 useContainerClassValidator(Container);
@@ -130,7 +133,11 @@ function setupRoutes(): void {
         res.sendFile(index);
     });
 
+    const socketService = Container.get(SocketService);
+
     const httpServer = createHttpServer(app);
+
+    socketService.attach(httpServer);
 
     httpServer.listen(config.HTTP_PORT, () => {
         logger.info(
@@ -169,6 +176,8 @@ function setupRoutes(): void {
             },
             app,
         );
+
+        socketService.attach(httpsServer);
 
         httpsServer.listen(config.HTTPS_PORT, () => {
             logger.info(
@@ -274,9 +283,37 @@ setupDatabase()
     .then(async (dataSource) => {
         if (dataSource === null) {
             return;
-}
+        }
 
-setupRoutes();
+        try {
+            logger.verbose("Resetting victims' status...", {
+                label: 'server',
+                action: 'start',
+            });
+            const result = await dataSource
+                .getRepository(VictimEntity)
+                .update(
+                    { status: VictimStatus.CONNECTED },
+                    { status: VictimStatus.DISCONNECTED },
+                );
+            logger.info(`Reset ${result.affected} victims' status!`, {
+                label: 'server',
+                action: 'start',
+            });
+        } catch (error) {
+            logger.error(
+                `Unable to reset victims' status! ${
+                    error instanceof Error ? error.message : (error as string)
+                }`,
+                {
+                    label: 'server',
+                    action: 'start',
+                    error,
+                },
+            );
+        }
+
+        setupRoutes();
     })
     .catch((error) => {
         logger.error('Unable to setup database! ' + error.message, {
