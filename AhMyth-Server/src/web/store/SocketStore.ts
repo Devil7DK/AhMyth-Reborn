@@ -27,7 +27,10 @@ export class SocketStore {
     public loading: boolean = false;
 
     constructor() {
-        this.socket = io(SOCKET_NAMESPACE_WEB, { autoConnect: false });
+        this.socket = io(SOCKET_NAMESPACE_WEB, {
+            autoConnect: false,
+            forceNew: true,
+        });
 
         this.setupListeners().catch((error) => {
             console.error('Failed to setup socket listeners!', error);

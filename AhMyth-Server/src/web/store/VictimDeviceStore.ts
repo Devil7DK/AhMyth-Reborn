@@ -49,6 +49,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             query: {
                 deviceId: this.deviceId,
             },
+            forceNew: true,
         });
 
         this.setupListeners();
