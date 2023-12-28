@@ -42,4 +42,8 @@ export const config = cleanEnv(process.env, {
         devDefault: 'admin',
         desc: 'The password to use for authentication.',
     }),
+    SQLITE_FILE: str({
+        default: 'database.sqlite',
+        desc: 'The path to the SQLite database file.',
+    }),
 });

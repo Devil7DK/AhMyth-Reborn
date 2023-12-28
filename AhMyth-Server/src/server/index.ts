@@ -15,6 +15,7 @@ import Container from 'typedi';
 
 import { config } from './config';
 import * as controllers from './controllers';
+import { setupDatabase } from './database';
 import { logger } from './logger';
 import { getPublicDir, timeConversion } from './utils/Common';
 
@@ -269,4 +270,18 @@ if (config.isDevelopment) {
     });
 }
 
+setupDatabase()
+    .then(async (dataSource) => {
+        if (dataSource === null) {
+            return;
+}
+
 setupRoutes();
+    })
+    .catch((error) => {
+        logger.error('Unable to setup database! ' + error.message, {
+            label: 'server',
+            action: 'start',
+            error,
+        });
+    });
