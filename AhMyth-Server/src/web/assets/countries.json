@@ -1,0 +1,1752 @@
+[
+  {
+    "ISO_A2": "AD",
+    "ISO_A3": "AND",
+    "ISO_Numeric": "020",
+    "FIPS": "AN",
+    "Country": "Andorra"
+  },
+  {
+    "ISO_A2": "AE",
+    "ISO_A3": "ARE",
+    "ISO_Numeric": "784",
+    "FIPS": "AE",
+    "Country": "United Arab Emirates"
+  },
+  {
+    "ISO_A2": "AF",
+    "ISO_A3": "AFG",
+    "ISO_Numeric": "004",
+    "FIPS": "AF",
+    "Country": "Afghanistan"
+  },
+  {
+    "ISO_A2": "AG",
+    "ISO_A3": "ATG",
+    "ISO_Numeric": "028",
+    "FIPS": "AC",
+    "Country": "Antigua and Barbuda"
+  },
+  {
+    "ISO_A2": "AI",
+    "ISO_A3": "AIA",
+    "ISO_Numeric": "660",
+    "FIPS": "AV",
+    "Country": "Anguilla"
+  },
+  {
+    "ISO_A2": "AL",
+    "ISO_A3": "ALB",
+    "ISO_Numeric": "008",
+    "FIPS": "AL",
+    "Country": "Albania"
+  },
+  {
+    "ISO_A2": "AM",
+    "ISO_A3": "ARM",
+    "ISO_Numeric": "051",
+    "FIPS": "AM",
+    "Country": "Armenia"
+  },
+  {
+    "ISO_A2": "AO",
+    "ISO_A3": "AGO",
+    "ISO_Numeric": "024",
+    "FIPS": "AO",
+    "Country": "Angola"
+  },
+  {
+    "ISO_A2": "AQ",
+    "ISO_A3": "ATA",
+    "ISO_Numeric": "010",
+    "FIPS": "AY",
+    "Country": "Antarctica"
+  },
+  {
+    "ISO_A2": "AR",
+    "ISO_A3": "ARG",
+    "ISO_Numeric": "032",
+    "FIPS": "AR",
+    "Country": "Argentina"
+  },
+  {
+    "ISO_A2": "AS",
+    "ISO_A3": "ASM",
+    "ISO_Numeric": "016",
+    "FIPS": "AQ",
+    "Country": "American Samoa"
+  },
+  {
+    "ISO_A2": "AT",
+    "ISO_A3": "AUT",
+    "ISO_Numeric": "040",
+    "FIPS": "AU",
+    "Country": "Austria"
+  },
+  {
+    "ISO_A2": "AU",
+    "ISO_A3": "AUS",
+    "ISO_Numeric": "036",
+    "FIPS": "AS",
+    "Country": "Australia"
+  },
+  {
+    "ISO_A2": "AW",
+    "ISO_A3": "ABW",
+    "ISO_Numeric": "533",
+    "FIPS": "AA",
+    "Country": "Aruba"
+  },
+  {
+    "ISO_A2": "AX",
+    "ISO_A3": "ALA",
+    "ISO_Numeric": "248",
+    "FIPS": "",
+    "Country": "Åland"
+  },
+  {
+    "ISO_A2": "AZ",
+    "ISO_A3": "AZE",
+    "ISO_Numeric": "031",
+    "FIPS": "AJ",
+    "Country": "Azerbaijan"
+  },
+  {
+    "ISO_A2": "BA",
+    "ISO_A3": "BIH",
+    "ISO_Numeric": "070",
+    "FIPS": "BK",
+    "Country": "Bosnia and Herzegovina"
+  },
+  {
+    "ISO_A2": "BB",
+    "ISO_A3": "BRB",
+    "ISO_Numeric": "052",
+    "FIPS": "BB",
+    "Country": "Barbados"
+  },
+  {
+    "ISO_A2": "BD",
+    "ISO_A3": "BGD",
+    "ISO_Numeric": "050",
+    "FIPS": "BG",
+    "Country": "Bangladesh"
+  },
+  {
+    "ISO_A2": "BE",
+    "ISO_A3": "BEL",
+    "ISO_Numeric": "056",
+    "FIPS": "BE",
+    "Country": "Belgium"
+  },
+  {
+    "ISO_A2": "BF",
+    "ISO_A3": "BFA",
+    "ISO_Numeric": "854",
+    "FIPS": "UV",
+    "Country": "Burkina Faso"
+  },
+  {
+    "ISO_A2": "BG",
+    "ISO_A3": "BGR",
+    "ISO_Numeric": "100",
+    "FIPS": "BU",
+    "Country": "Bulgaria"
+  },
+  {
+    "ISO_A2": "BH",
+    "ISO_A3": "BHR",
+    "ISO_Numeric": "048",
+    "FIPS": "BA",
+    "Country": "Bahrain"
+  },
+  {
+    "ISO_A2": "BI",
+    "ISO_A3": "BDI",
+    "ISO_Numeric": "108",
+    "FIPS": "BY",
+    "Country": "Burundi"
+  },
+  {
+    "ISO_A2": "BJ",
+    "ISO_A3": "BEN",
+    "ISO_Numeric": "204",
+    "FIPS": "BN",
+    "Country": "Benin"
+  },
+  {
+    "ISO_A2": "BL",
+    "ISO_A3": "BLM",
+    "ISO_Numeric": "652",
+    "FIPS": "TB",
+    "Country": "Saint Barthélemy"
+  },
+  {
+    "ISO_A2": "BM",
+    "ISO_A3": "BMU",
+    "ISO_Numeric": "060",
+    "FIPS": "BD",
+    "Country": "Bermuda"
+  },
+  {
+    "ISO_A2": "BN",
+    "ISO_A3": "BRN",
+    "ISO_Numeric": "096",
+    "FIPS": "BX",
+    "Country": "Brunei"
+  },
+  {
+    "ISO_A2": "BO",
+    "ISO_A3": "BOL",
+    "ISO_Numeric": "068",
+    "FIPS": "BL",
+    "Country": "Bolivia"
+  },
+  {
+    "ISO_A2": "BQ",
+    "ISO_A3": "BES",
+    "ISO_Numeric": "535",
+    "FIPS": "",
+    "Country": "Bonaire, Sint Eustatius, and Saba"
+  },
+  {
+    "ISO_A2": "BR",
+    "ISO_A3": "BRA",
+    "ISO_Numeric": "076",
+    "FIPS": "BR",
+    "Country": "Brazil"
+  },
+  {
+    "ISO_A2": "BS",
+    "ISO_A3": "BHS",
+    "ISO_Numeric": "044",
+    "FIPS": "BF",
+    "Country": "Bahamas"
+  },
+  {
+    "ISO_A2": "BT",
+    "ISO_A3": "BTN",
+    "ISO_Numeric": "064",
+    "FIPS": "BT",
+    "Country": "Bhutan"
+  },
+  {
+    "ISO_A2": "BV",
+    "ISO_A3": "BVT",
+    "ISO_Numeric": "074",
+    "FIPS": "BV",
+    "Country": "Bouvet Island"
+  },
+  {
+    "ISO_A2": "BW",
+    "ISO_A3": "BWA",
+    "ISO_Numeric": "072",
+    "FIPS": "BC",
+    "Country": "Botswana"
+  },
+  {
+    "ISO_A2": "BY",
+    "ISO_A3": "BLR",
+    "ISO_Numeric": "112",
+    "FIPS": "BO",
+    "Country": "Belarus"
+  },
+  {
+    "ISO_A2": "BZ",
+    "ISO_A3": "BLZ",
+    "ISO_Numeric": "084",
+    "FIPS": "BH",
+    "Country": "Belize"
+  },
+  {
+    "ISO_A2": "CA",
+    "ISO_A3": "CAN",
+    "ISO_Numeric": "124",
+    "FIPS": "CA",
+    "Country": "Canada"
+  },
+  {
+    "ISO_A2": "CC",
+    "ISO_A3": "CCK",
+    "ISO_Numeric": "166",
+    "FIPS": "CK",
+    "Country": "Cocos (Keeling) Islands"
+  },
+  {
+    "ISO_A2": "CD",
+    "ISO_A3": "COD",
+    "ISO_Numeric": "180",
+    "FIPS": "CG",
+    "Country": "DR Congo"
+  },
+  {
+    "ISO_A2": "CF",
+    "ISO_A3": "CAF",
+    "ISO_Numeric": "140",
+    "FIPS": "CT",
+    "Country": "Central African Republic"
+  },
+  {
+    "ISO_A2": "CG",
+    "ISO_A3": "COG",
+    "ISO_Numeric": "178",
+    "FIPS": "CF",
+    "Country": "Congo Republic"
+  },
+  {
+    "ISO_A2": "CH",
+    "ISO_A3": "CHE",
+    "ISO_Numeric": "756",
+    "FIPS": "SZ",
+    "Country": "Switzerland"
+  },
+  {
+    "ISO_A2": "CI",
+    "ISO_A3": "CIV",
+    "ISO_Numeric": "384",
+    "FIPS": "IV",
+    "Country": "Ivory Coast"
+  },
+  {
+    "ISO_A2": "CK",
+    "ISO_A3": "COK",
+    "ISO_Numeric": "184",
+    "FIPS": "CW",
+    "Country": "Cook Islands"
+  },
+  {
+    "ISO_A2": "CL",
+    "ISO_A3": "CHL",
+    "ISO_Numeric": "152",
+    "FIPS": "CI",
+    "Country": "Chile"
+  },
+  {
+    "ISO_A2": "CM",
+    "ISO_A3": "CMR",
+    "ISO_Numeric": "120",
+    "FIPS": "CM",
+    "Country": "Cameroon"
+  },
+  {
+    "ISO_A2": "CN",
+    "ISO_A3": "CHN",
+    "ISO_Numeric": "156",
+    "FIPS": "CH",
+    "Country": "China"
+  },
+  {
+    "ISO_A2": "CO",
+    "ISO_A3": "COL",
+    "ISO_Numeric": "170",
+    "FIPS": "CO",
+    "Country": "Colombia"
+  },
+  {
+    "ISO_A2": "CR",
+    "ISO_A3": "CRI",
+    "ISO_Numeric": "188",
+    "FIPS": "CS",
+    "Country": "Costa Rica"
+  },
+  {
+    "ISO_A2": "CU",
+    "ISO_A3": "CUB",
+    "ISO_Numeric": "192",
+    "FIPS": "CU",
+    "Country": "Cuba"
+  },
+  {
+    "ISO_A2": "CV",
+    "ISO_A3": "CPV",
+    "ISO_Numeric": "132",
+    "FIPS": "CV",
+    "Country": "Cabo Verde"
+  },
+  {
+    "ISO_A2": "CW",
+    "ISO_A3": "CUW",
+    "ISO_Numeric": "531",
+    "FIPS": "UC",
+    "Country": "Curaçao"
+  },
+  {
+    "ISO_A2": "CX",
+    "ISO_A3": "CXR",
+    "ISO_Numeric": "162",
+    "FIPS": "KT",
+    "Country": "Christmas Island"
+  },
+  {
+    "ISO_A2": "CY",
+    "ISO_A3": "CYP",
+    "ISO_Numeric": "196",
+    "FIPS": "CY",
+    "Country": "Cyprus"
+  },
+  {
+    "ISO_A2": "CZ",
+    "ISO_A3": "CZE",
+    "ISO_Numeric": "203",
+    "FIPS": "EZ",
+    "Country": "Czechia"
+  },
+  {
+    "ISO_A2": "DE",
+    "ISO_A3": "DEU",
+    "ISO_Numeric": "276",
+    "FIPS": "GM",
+    "Country": "Germany"
+  },
+  {
+    "ISO_A2": "DJ",
+    "ISO_A3": "DJI",
+    "ISO_Numeric": "262",
+    "FIPS": "DJ",
+    "Country": "Djibouti"
+  },
+  {
+    "ISO_A2": "DK",
+    "ISO_A3": "DNK",
+    "ISO_Numeric": "208",
+    "FIPS": "DA",
+    "Country": "Denmark"
+  },
+  {
+    "ISO_A2": "DM",
+    "ISO_A3": "DMA",
+    "ISO_Numeric": "212",
+    "FIPS": "DO",
+    "Country": "Dominica"
+  },
+  {
+    "ISO_A2": "DO",
+    "ISO_A3": "DOM",
+    "ISO_Numeric": "214",
+    "FIPS": "DR",
+    "Country": "Dominican Republic"
+  },
+  {
+    "ISO_A2": "DZ",
+    "ISO_A3": "DZA",
+    "ISO_Numeric": "012",
+    "FIPS": "AG",
+    "Country": "Algeria"
+  },
+  {
+    "ISO_A2": "EC",
+    "ISO_A3": "ECU",
+    "ISO_Numeric": "218",
+    "FIPS": "EC",
+    "Country": "Ecuador"
+  },
+  {
+    "ISO_A2": "EE",
+    "ISO_A3": "EST",
+    "ISO_Numeric": "233",
+    "FIPS": "EN",
+    "Country": "Estonia"
+  },
+  {
+    "ISO_A2": "EG",
+    "ISO_A3": "EGY",
+    "ISO_Numeric": "818",
+    "FIPS": "EG",
+    "Country": "Egypt"
+  },
+  {
+    "ISO_A2": "EH",
+    "ISO_A3": "ESH",
+    "ISO_Numeric": "732",
+    "FIPS": "WI",
+    "Country": "Western Sahara"
+  },
+  {
+    "ISO_A2": "ER",
+    "ISO_A3": "ERI",
+    "ISO_Numeric": "232",
+    "FIPS": "ER",
+    "Country": "Eritrea"
+  },
+  {
+    "ISO_A2": "ES",
+    "ISO_A3": "ESP",
+    "ISO_Numeric": "724",
+    "FIPS": "SP",
+    "Country": "Spain"
+  },
+  {
+    "ISO_A2": "ET",
+    "ISO_A3": "ETH",
+    "ISO_Numeric": "231",
+    "FIPS": "ET",
+    "Country": "Ethiopia"
+  },
+  {
+    "ISO_A2": "FI",
+    "ISO_A3": "FIN",
+    "ISO_Numeric": "246",
+    "FIPS": "FI",
+    "Country": "Finland"
+  },
+  {
+    "ISO_A2": "FJ",
+    "ISO_A3": "FJI",
+    "ISO_Numeric": "242",
+    "FIPS": "FJ",
+    "Country": "Fiji"
+  },
+  {
+    "ISO_A2": "FK",
+    "ISO_A3": "FLK",
+    "ISO_Numeric": "238",
+    "FIPS": "FK",
+    "Country": "Falkland Islands"
+  },
+  {
+    "ISO_A2": "FM",
+    "ISO_A3": "FSM",
+    "ISO_Numeric": "583",
+    "FIPS": "FM",
+    "Country": "Micronesia"
+  },
+  {
+    "ISO_A2": "FO",
+    "ISO_A3": "FRO",
+    "ISO_Numeric": "234",
+    "FIPS": "FO",
+    "Country": "Faroe Islands"
+  },
+  {
+    "ISO_A2": "FR",
+    "ISO_A3": "FRA",
+    "ISO_Numeric": "250",
+    "FIPS": "FR",
+    "Country": "France"
+  },
+  {
+    "ISO_A2": "GA",
+    "ISO_A3": "GAB",
+    "ISO_Numeric": "266",
+    "FIPS": "GB",
+    "Country": "Gabon"
+  },
+  {
+    "ISO_A2": "GB",
+    "ISO_A3": "GBR",
+    "ISO_Numeric": "826",
+    "FIPS": "UK",
+    "Country": "United Kingdom"
+  },
+  {
+    "ISO_A2": "GD",
+    "ISO_A3": "GRD",
+    "ISO_Numeric": "308",
+    "FIPS": "GJ",
+    "Country": "Grenada"
+  },
+  {
+    "ISO_A2": "GE",
+    "ISO_A3": "GEO",
+    "ISO_Numeric": "268",
+    "FIPS": "GG",
+    "Country": "Georgia"
+  },
+  {
+    "ISO_A2": "GF",
+    "ISO_A3": "GUF",
+    "ISO_Numeric": "254",
+    "FIPS": "FG",
+    "Country": "French Guiana"
+  },
+  {
+    "ISO_A2": "GG",
+    "ISO_A3": "GGY",
+    "ISO_Numeric": "831",
+    "FIPS": "GK",
+    "Country": "Guernsey"
+  },
+  {
+    "ISO_A2": "GH",
+    "ISO_A3": "GHA",
+    "ISO_Numeric": "288",
+    "FIPS": "GH",
+    "Country": "Ghana"
+  },
+  {
+    "ISO_A2": "GI",
+    "ISO_A3": "GIB",
+    "ISO_Numeric": "292",
+    "FIPS": "GI",
+    "Country": "Gibraltar"
+  },
+  {
+    "ISO_A2": "GL",
+    "ISO_A3": "GRL",
+    "ISO_Numeric": "304",
+    "FIPS": "GL",
+    "Country": "Greenland"
+  },
+  {
+    "ISO_A2": "GM",
+    "ISO_A3": "GMB",
+    "ISO_Numeric": "270",
+    "FIPS": "GA",
+    "Country": "The Gambia"
+  },
+  {
+    "ISO_A2": "GN",
+    "ISO_A3": "GIN",
+    "ISO_Numeric": "324",
+    "FIPS": "GV",
+    "Country": "Guinea"
+  },
+  {
+    "ISO_A2": "GP",
+    "ISO_A3": "GLP",
+    "ISO_Numeric": "312",
+    "FIPS": "GP",
+    "Country": "Guadeloupe"
+  },
+  {
+    "ISO_A2": "GQ",
+    "ISO_A3": "GNQ",
+    "ISO_Numeric": "226",
+    "FIPS": "EK",
+    "Country": "Equatorial Guinea"
+  },
+  {
+    "ISO_A2": "GR",
+    "ISO_A3": "GRC",
+    "ISO_Numeric": "300",
+    "FIPS": "GR",
+    "Country": "Greece"
+  },
+  {
+    "ISO_A2": "GS",
+    "ISO_A3": "SGS",
+    "ISO_Numeric": "239",
+    "FIPS": "SX",
+    "Country": "South Georgia and South Sandwich Islands"
+  },
+  {
+    "ISO_A2": "GT",
+    "ISO_A3": "GTM",
+    "ISO_Numeric": "320",
+    "FIPS": "GT",
+    "Country": "Guatemala"
+  },
+  {
+    "ISO_A2": "GU",
+    "ISO_A3": "GUM",
+    "ISO_Numeric": "316",
+    "FIPS": "GQ",
+    "Country": "Guam"
+  },
+  {
+    "ISO_A2": "GW",
+    "ISO_A3": "GNB",
+    "ISO_Numeric": "624",
+    "FIPS": "PU",
+    "Country": "Guinea-Bissau"
+  },
+  {
+    "ISO_A2": "GY",
+    "ISO_A3": "GUY",
+    "ISO_Numeric": "328",
+    "FIPS": "GY",
+    "Country": "Guyana"
+  },
+  {
+    "ISO_A2": "HK",
+    "ISO_A3": "HKG",
+    "ISO_Numeric": "344",
+    "FIPS": "HK",
+    "Country": "Hong Kong"
+  },
+  {
+    "ISO_A2": "HM",
+    "ISO_A3": "HMD",
+    "ISO_Numeric": "334",
+    "FIPS": "HM",
+    "Country": "Heard and McDonald Islands"
+  },
+  {
+    "ISO_A2": "HN",
+    "ISO_A3": "HND",
+    "ISO_Numeric": "340",
+    "FIPS": "HO",
+    "Country": "Honduras"
+  },
+  {
+    "ISO_A2": "HR",
+    "ISO_A3": "HRV",
+    "ISO_Numeric": "191",
+    "FIPS": "HR",
+    "Country": "Croatia"
+  },
+  {
+    "ISO_A2": "HT",
+    "ISO_A3": "HTI",
+    "ISO_Numeric": "332",
+    "FIPS": "HA",
+    "Country": "Haiti"
+  },
+  {
+    "ISO_A2": "HU",
+    "ISO_A3": "HUN",
+    "ISO_Numeric": "348",
+    "FIPS": "HU",
+    "Country": "Hungary"
+  },
+  {
+    "ISO_A2": "ID",
+    "ISO_A3": "IDN",
+    "ISO_Numeric": "360",
+    "FIPS": "ID",
+    "Country": "Indonesia"
+  },
+  {
+    "ISO_A2": "IE",
+    "ISO_A3": "IRL",
+    "ISO_Numeric": "372",
+    "FIPS": "EI",
+    "Country": "Ireland"
+  },
+  {
+    "ISO_A2": "IL",
+    "ISO_A3": "ISR",
+    "ISO_Numeric": "376",
+    "FIPS": "IS",
+    "Country": "Israel"
+  },
+  {
+    "ISO_A2": "IM",
+    "ISO_A3": "IMN",
+    "ISO_Numeric": "833",
+    "FIPS": "IM",
+    "Country": "Isle of Man"
+  },
+  {
+    "ISO_A2": "IN",
+    "ISO_A3": "IND",
+    "ISO_Numeric": "356",
+    "FIPS": "IN",
+    "Country": "India"
+  },
+  {
+    "ISO_A2": "IO",
+    "ISO_A3": "IOT",
+    "ISO_Numeric": "086",
+    "FIPS": "IO",
+    "Country": "British Indian Ocean Territory"
+  },
+  {
+    "ISO_A2": "IQ",
+    "ISO_A3": "IRQ",
+    "ISO_Numeric": "368",
+    "FIPS": "IZ",
+    "Country": "Iraq"
+  },
+  {
+    "ISO_A2": "IR",
+    "ISO_A3": "IRN",
+    "ISO_Numeric": "364",
+    "FIPS": "IR",
+    "Country": "Iran"
+  },
+  {
+    "ISO_A2": "IS",
+    "ISO_A3": "ISL",
+    "ISO_Numeric": "352",
+    "FIPS": "IC",
+    "Country": "Iceland"
+  },
+  {
+    "ISO_A2": "IT",
+    "ISO_A3": "ITA",
+    "ISO_Numeric": "380",
+    "FIPS": "IT",
+    "Country": "Italy"
+  },
+  {
+    "ISO_A2": "JE",
+    "ISO_A3": "JEY",
+    "ISO_Numeric": "832",
+    "FIPS": "JE",
+    "Country": "Jersey"
+  },
+  {
+    "ISO_A2": "JM",
+    "ISO_A3": "JAM",
+    "ISO_Numeric": "388",
+    "FIPS": "JM",
+    "Country": "Jamaica"
+  },
+  {
+    "ISO_A2": "JO",
+    "ISO_A3": "JOR",
+    "ISO_Numeric": "400",
+    "FIPS": "JO",
+    "Country": "Jordan"
+  },
+  {
+    "ISO_A2": "JP",
+    "ISO_A3": "JPN",
+    "ISO_Numeric": "392",
+    "FIPS": "JA",
+    "Country": "Japan"
+  },
+  {
+    "ISO_A2": "KE",
+    "ISO_A3": "KEN",
+    "ISO_Numeric": "404",
+    "FIPS": "KE",
+    "Country": "Kenya"
+  },
+  {
+    "ISO_A2": "KG",
+    "ISO_A3": "KGZ",
+    "ISO_Numeric": "417",
+    "FIPS": "KG",
+    "Country": "Kyrgyzstan"
+  },
+  {
+    "ISO_A2": "KH",
+    "ISO_A3": "KHM",
+    "ISO_Numeric": "116",
+    "FIPS": "CB",
+    "Country": "Cambodia"
+  },
+  {
+    "ISO_A2": "KI",
+    "ISO_A3": "KIR",
+    "ISO_Numeric": "296",
+    "FIPS": "KR",
+    "Country": "Kiribati"
+  },
+  {
+    "ISO_A2": "KM",
+    "ISO_A3": "COM",
+    "ISO_Numeric": "174",
+    "FIPS": "CN",
+    "Country": "Comoros"
+  },
+  {
+    "ISO_A2": "KN",
+    "ISO_A3": "KNA",
+    "ISO_Numeric": "659",
+    "FIPS": "SC",
+    "Country": "St Kitts and Nevis"
+  },
+  {
+    "ISO_A2": "KP",
+    "ISO_A3": "PRK",
+    "ISO_Numeric": "408",
+    "FIPS": "KN",
+    "Country": "North Korea"
+  },
+  {
+    "ISO_A2": "KR",
+    "ISO_A3": "KOR",
+    "ISO_Numeric": "410",
+    "FIPS": "KS",
+    "Country": "South Korea"
+  },
+  {
+    "ISO_A2": "KW",
+    "ISO_A3": "KWT",
+    "ISO_Numeric": "414",
+    "FIPS": "KU",
+    "Country": "Kuwait"
+  },
+  {
+    "ISO_A2": "KY",
+    "ISO_A3": "CYM",
+    "ISO_Numeric": "136",
+    "FIPS": "CJ",
+    "Country": "Cayman Islands"
+  },
+  {
+    "ISO_A2": "KZ",
+    "ISO_A3": "KAZ",
+    "ISO_Numeric": "398",
+    "FIPS": "KZ",
+    "Country": "Kazakhstan"
+  },
+  {
+    "ISO_A2": "LA",
+    "ISO_A3": "LAO",
+    "ISO_Numeric": "418",
+    "FIPS": "LA",
+    "Country": "Laos"
+  },
+  {
+    "ISO_A2": "LB",
+    "ISO_A3": "LBN",
+    "ISO_Numeric": "422",
+    "FIPS": "LE",
+    "Country": "Lebanon"
+  },
+  {
+    "ISO_A2": "LC",
+    "ISO_A3": "LCA",
+    "ISO_Numeric": "662",
+    "FIPS": "ST",
+    "Country": "Saint Lucia"
+  },
+  {
+    "ISO_A2": "LI",
+    "ISO_A3": "LIE",
+    "ISO_Numeric": "438",
+    "FIPS": "LS",
+    "Country": "Liechtenstein"
+  },
+  {
+    "ISO_A2": "LK",
+    "ISO_A3": "LKA",
+    "ISO_Numeric": "144",
+    "FIPS": "CE",
+    "Country": "Sri Lanka"
+  },
+  {
+    "ISO_A2": "LR",
+    "ISO_A3": "LBR",
+    "ISO_Numeric": "430",
+    "FIPS": "LI",
+    "Country": "Liberia"
+  },
+  {
+    "ISO_A2": "LS",
+    "ISO_A3": "LSO",
+    "ISO_Numeric": "426",
+    "FIPS": "LT",
+    "Country": "Lesotho"
+  },
+  {
+    "ISO_A2": "LT",
+    "ISO_A3": "LTU",
+    "ISO_Numeric": "440",
+    "FIPS": "LH",
+    "Country": "Lithuania"
+  },
+  {
+    "ISO_A2": "LU",
+    "ISO_A3": "LUX",
+    "ISO_Numeric": "442",
+    "FIPS": "LU",
+    "Country": "Luxembourg"
+  },
+  {
+    "ISO_A2": "LV",
+    "ISO_A3": "LVA",
+    "ISO_Numeric": "428",
+    "FIPS": "LG",
+    "Country": "Latvia"
+  },
+  {
+    "ISO_A2": "LY",
+    "ISO_A3": "LBY",
+    "ISO_Numeric": "434",
+    "FIPS": "LY",
+    "Country": "Libya"
+  },
+  {
+    "ISO_A2": "MA",
+    "ISO_A3": "MAR",
+    "ISO_Numeric": "504",
+    "FIPS": "MO",
+    "Country": "Morocco"
+  },
+  {
+    "ISO_A2": "MC",
+    "ISO_A3": "MCO",
+    "ISO_Numeric": "492",
+    "FIPS": "MN",
+    "Country": "Monaco"
+  },
+  {
+    "ISO_A2": "MD",
+    "ISO_A3": "MDA",
+    "ISO_Numeric": "498",
+    "FIPS": "MD",
+    "Country": "Moldova"
+  },
+  {
+    "ISO_A2": "ME",
+    "ISO_A3": "MNE",
+    "ISO_Numeric": "499",
+    "FIPS": "MJ",
+    "Country": "Montenegro"
+  },
+  {
+    "ISO_A2": "MF",
+    "ISO_A3": "MAF",
+    "ISO_Numeric": "663",
+    "FIPS": "RN",
+    "Country": "Saint Martin"
+  },
+  {
+    "ISO_A2": "MG",
+    "ISO_A3": "MDG",
+    "ISO_Numeric": "450",
+    "FIPS": "MA",
+    "Country": "Madagascar"
+  },
+  {
+    "ISO_A2": "MH",
+    "ISO_A3": "MHL",
+    "ISO_Numeric": "584",
+    "FIPS": "RM",
+    "Country": "Marshall Islands"
+  },
+  {
+    "ISO_A2": "MK",
+    "ISO_A3": "MKD",
+    "ISO_Numeric": "807",
+    "FIPS": "MK",
+    "Country": "North Macedonia"
+  },
+  {
+    "ISO_A2": "ML",
+    "ISO_A3": "MLI",
+    "ISO_Numeric": "466",
+    "FIPS": "ML",
+    "Country": "Mali"
+  },
+  {
+    "ISO_A2": "MM",
+    "ISO_A3": "MMR",
+    "ISO_Numeric": "104",
+    "FIPS": "BM",
+    "Country": "Myanmar"
+  },
+  {
+    "ISO_A2": "MN",
+    "ISO_A3": "MNG",
+    "ISO_Numeric": "496",
+    "FIPS": "MG",
+    "Country": "Mongolia"
+  },
+  {
+    "ISO_A2": "MO",
+    "ISO_A3": "MAC",
+    "ISO_Numeric": "446",
+    "FIPS": "MC",
+    "Country": "Macao"
+  },
+  {
+    "ISO_A2": "MP",
+    "ISO_A3": "MNP",
+    "ISO_Numeric": "580",
+    "FIPS": "CQ",
+    "Country": "Northern Mariana Islands"
+  },
+  {
+    "ISO_A2": "MQ",
+    "ISO_A3": "MTQ",
+    "ISO_Numeric": "474",
+    "FIPS": "MB",
+    "Country": "Martinique"
+  },
+  {
+    "ISO_A2": "MR",
+    "ISO_A3": "MRT",
+    "ISO_Numeric": "478",
+    "FIPS": "MR",
+    "Country": "Mauritania"
+  },
+  {
+    "ISO_A2": "MS",
+    "ISO_A3": "MSR",
+    "ISO_Numeric": "500",
+    "FIPS": "MH",
+    "Country": "Montserrat"
+  },
+  {
+    "ISO_A2": "MT",
+    "ISO_A3": "MLT",
+    "ISO_Numeric": "470",
+    "FIPS": "MT",
+    "Country": "Malta"
+  },
+  {
+    "ISO_A2": "MU",
+    "ISO_A3": "MUS",
+    "ISO_Numeric": "480",
+    "FIPS": "MP",
+    "Country": "Mauritius"
+  },
+  {
+    "ISO_A2": "MV",
+    "ISO_A3": "MDV",
+    "ISO_Numeric": "462",
+    "FIPS": "MV",
+    "Country": "Maldives"
+  },
+  {
+    "ISO_A2": "MW",
+    "ISO_A3": "MWI",
+    "ISO_Numeric": "454",
+    "FIPS": "MI",
+    "Country": "Malawi"
+  },
+  {
+    "ISO_A2": "MX",
+    "ISO_A3": "MEX",
+    "ISO_Numeric": "484",
+    "FIPS": "MX",
+    "Country": "Mexico"
+  },
+  {
+    "ISO_A2": "MY",
+    "ISO_A3": "MYS",
+    "ISO_Numeric": "458",
+    "FIPS": "MY",
+    "Country": "Malaysia"
+  },
+  {
+    "ISO_A2": "MZ",
+    "ISO_A3": "MOZ",
+    "ISO_Numeric": "508",
+    "FIPS": "MZ",
+    "Country": "Mozambique"
+  },
+  {
+    "ISO_A2": "NA",
+    "ISO_A3": "NAM",
+    "ISO_Numeric": "516",
+    "FIPS": "WA",
+    "Country": "Namibia"
+  },
+  {
+    "ISO_A2": "NC",
+    "ISO_A3": "NCL",
+    "ISO_Numeric": "540",
+    "FIPS": "NC",
+    "Country": "New Caledonia"
+  },
+  {
+    "ISO_A2": "NE",
+    "ISO_A3": "NER",
+    "ISO_Numeric": "562",
+    "FIPS": "NG",
+    "Country": "Niger"
+  },
+  {
+    "ISO_A2": "NF",
+    "ISO_A3": "NFK",
+    "ISO_Numeric": "574",
+    "FIPS": "NF",
+    "Country": "Norfolk Island"
+  },
+  {
+    "ISO_A2": "NG",
+    "ISO_A3": "NGA",
+    "ISO_Numeric": "566",
+    "FIPS": "NI",
+    "Country": "Nigeria"
+  },
+  {
+    "ISO_A2": "NI",
+    "ISO_A3": "NIC",
+    "ISO_Numeric": "558",
+    "FIPS": "NU",
+    "Country": "Nicaragua"
+  },
+  {
+    "ISO_A2": "NL",
+    "ISO_A3": "NLD",
+    "ISO_Numeric": "528",
+    "FIPS": "NL",
+    "Country": "The Netherlands"
+  },
+  {
+    "ISO_A2": "NO",
+    "ISO_A3": "NOR",
+    "ISO_Numeric": "578",
+    "FIPS": "NO",
+    "Country": "Norway"
+  },
+  {
+    "ISO_A2": "NP",
+    "ISO_A3": "NPL",
+    "ISO_Numeric": "524",
+    "FIPS": "NP",
+    "Country": "Nepal"
+  },
+  {
+    "ISO_A2": "NR",
+    "ISO_A3": "NRU",
+    "ISO_Numeric": "520",
+    "FIPS": "NR",
+    "Country": "Nauru"
+  },
+  {
+    "ISO_A2": "NU",
+    "ISO_A3": "NIU",
+    "ISO_Numeric": "570",
+    "FIPS": "NE",
+    "Country": "Niue"
+  },
+  {
+    "ISO_A2": "NZ",
+    "ISO_A3": "NZL",
+    "ISO_Numeric": "554",
+    "FIPS": "NZ",
+    "Country": "New Zealand"
+  },
+  {
+    "ISO_A2": "OM",
+    "ISO_A3": "OMN",
+    "ISO_Numeric": "512",
+    "FIPS": "MU",
+    "Country": "Oman"
+  },
+  {
+    "ISO_A2": "PA",
+    "ISO_A3": "PAN",
+    "ISO_Numeric": "591",
+    "FIPS": "PM",
+    "Country": "Panama"
+  },
+  {
+    "ISO_A2": "PE",
+    "ISO_A3": "PER",
+    "ISO_Numeric": "604",
+    "FIPS": "PE",
+    "Country": "Peru"
+  },
+  {
+    "ISO_A2": "PF",
+    "ISO_A3": "PYF",
+    "ISO_Numeric": "258",
+    "FIPS": "FP",
+    "Country": "French Polynesia"
+  },
+  {
+    "ISO_A2": "PG",
+    "ISO_A3": "PNG",
+    "ISO_Numeric": "598",
+    "FIPS": "PP",
+    "Country": "Papua New Guinea"
+  },
+  {
+    "ISO_A2": "PH",
+    "ISO_A3": "PHL",
+    "ISO_Numeric": "608",
+    "FIPS": "RP",
+    "Country": "Philippines"
+  },
+  {
+    "ISO_A2": "PK",
+    "ISO_A3": "PAK",
+    "ISO_Numeric": "586",
+    "FIPS": "PK",
+    "Country": "Pakistan"
+  },
+  {
+    "ISO_A2": "PL",
+    "ISO_A3": "POL",
+    "ISO_Numeric": "616",
+    "FIPS": "PL",
+    "Country": "Poland"
+  },
+  {
+    "ISO_A2": "PM",
+    "ISO_A3": "SPM",
+    "ISO_Numeric": "666",
+    "FIPS": "SB",
+    "Country": "Saint Pierre and Miquelon"
+  },
+  {
+    "ISO_A2": "PN",
+    "ISO_A3": "PCN",
+    "ISO_Numeric": "612",
+    "FIPS": "PC",
+    "Country": "Pitcairn Islands"
+  },
+  {
+    "ISO_A2": "PR",
+    "ISO_A3": "PRI",
+    "ISO_Numeric": "630",
+    "FIPS": "RQ",
+    "Country": "Puerto Rico"
+  },
+  {
+    "ISO_A2": "PS",
+    "ISO_A3": "PSE",
+    "ISO_Numeric": "275",
+    "FIPS": "WE",
+    "Country": "Palestine"
+  },
+  {
+    "ISO_A2": "PT",
+    "ISO_A3": "PRT",
+    "ISO_Numeric": "620",
+    "FIPS": "PO",
+    "Country": "Portugal"
+  },
+  {
+    "ISO_A2": "PW",
+    "ISO_A3": "PLW",
+    "ISO_Numeric": "585",
+    "FIPS": "PS",
+    "Country": "Palau"
+  },
+  {
+    "ISO_A2": "PY",
+    "ISO_A3": "PRY",
+    "ISO_Numeric": "600",
+    "FIPS": "PA",
+    "Country": "Paraguay"
+  },
+  {
+    "ISO_A2": "QA",
+    "ISO_A3": "QAT",
+    "ISO_Numeric": "634",
+    "FIPS": "QA",
+    "Country": "Qatar"
+  },
+  {
+    "ISO_A2": "RE",
+    "ISO_A3": "REU",
+    "ISO_Numeric": "638",
+    "FIPS": "RE",
+    "Country": "Réunion"
+  },
+  {
+    "ISO_A2": "RO",
+    "ISO_A3": "ROU",
+    "ISO_Numeric": "642",
+    "FIPS": "RO",
+    "Country": "Romania"
+  },
+  {
+    "ISO_A2": "RS",
+    "ISO_A3": "SRB",
+    "ISO_Numeric": "688",
+    "FIPS": "RI",
+    "Country": "Serbia"
+  },
+  {
+    "ISO_A2": "RU",
+    "ISO_A3": "RUS",
+    "ISO_Numeric": "643",
+    "FIPS": "RS",
+    "Country": "Russia"
+  },
+  {
+    "ISO_A2": "RW",
+    "ISO_A3": "RWA",
+    "ISO_Numeric": "646",
+    "FIPS": "RW",
+    "Country": "Rwanda"
+  },
+  {
+    "ISO_A2": "SA",
+    "ISO_A3": "SAU",
+    "ISO_Numeric": "682",
+    "FIPS": "SA",
+    "Country": "Saudi Arabia"
+  },
+  {
+    "ISO_A2": "SB",
+    "ISO_A3": "SLB",
+    "ISO_Numeric": "090",
+    "FIPS": "BP",
+    "Country": "Solomon Islands"
+  },
+  {
+    "ISO_A2": "SC",
+    "ISO_A3": "SYC",
+    "ISO_Numeric": "690",
+    "FIPS": "SE",
+    "Country": "Seychelles"
+  },
+  {
+    "ISO_A2": "SD",
+    "ISO_A3": "SDN",
+    "ISO_Numeric": "729",
+    "FIPS": "SU",
+    "Country": "Sudan"
+  },
+  {
+    "ISO_A2": "SE",
+    "ISO_A3": "SWE",
+    "ISO_Numeric": "752",
+    "FIPS": "SW",
+    "Country": "Sweden"
+  },
+  {
+    "ISO_A2": "SG",
+    "ISO_A3": "SGP",
+    "ISO_Numeric": "702",
+    "FIPS": "SN",
+    "Country": "Singapore"
+  },
+  {
+    "ISO_A2": "SH",
+    "ISO_A3": "SHN",
+    "ISO_Numeric": "654",
+    "FIPS": "SH",
+    "Country": "Saint Helena"
+  },
+  {
+    "ISO_A2": "SI",
+    "ISO_A3": "SVN",
+    "ISO_Numeric": "705",
+    "FIPS": "SI",
+    "Country": "Slovenia"
+  },
+  {
+    "ISO_A2": "SJ",
+    "ISO_A3": "SJM",
+    "ISO_Numeric": "744",
+    "FIPS": "SV",
+    "Country": "Svalbard and Jan Mayen"
+  },
+  {
+    "ISO_A2": "SK",
+    "ISO_A3": "SVK",
+    "ISO_Numeric": "703",
+    "FIPS": "LO",
+    "Country": "Slovakia"
+  },
+  {
+    "ISO_A2": "SL",
+    "ISO_A3": "SLE",
+    "ISO_Numeric": "694",
+    "FIPS": "SL",
+    "Country": "Sierra Leone"
+  },
+  {
+    "ISO_A2": "SM",
+    "ISO_A3": "SMR",
+    "ISO_Numeric": "674",
+    "FIPS": "SM",
+    "Country": "San Marino"
+  },
+  {
+    "ISO_A2": "SN",
+    "ISO_A3": "SEN",
+    "ISO_Numeric": "686",
+    "FIPS": "SG",
+    "Country": "Senegal"
+  },
+  {
+    "ISO_A2": "SO",
+    "ISO_A3": "SOM",
+    "ISO_Numeric": "706",
+    "FIPS": "SO",
+    "Country": "Somalia"
+  },
+  {
+    "ISO_A2": "SR",
+    "ISO_A3": "SUR",
+    "ISO_Numeric": "740",
+    "FIPS": "NS",
+    "Country": "Suriname"
+  },
+  {
+    "ISO_A2": "SS",
+    "ISO_A3": "SSD",
+    "ISO_Numeric": "728",
+    "FIPS": "OD",
+    "Country": "South Sudan"
+  },
+  {
+    "ISO_A2": "ST",
+    "ISO_A3": "STP",
+    "ISO_Numeric": "678",
+    "FIPS": "TP",
+    "Country": "São Tomé and Príncipe"
+  },
+  {
+    "ISO_A2": "SV",
+    "ISO_A3": "SLV",
+    "ISO_Numeric": "222",
+    "FIPS": "ES",
+    "Country": "El Salvador"
+  },
+  {
+    "ISO_A2": "SX",
+    "ISO_A3": "SXM",
+    "ISO_Numeric": "534",
+    "FIPS": "NN",
+    "Country": "Sint Maarten"
+  },
+  {
+    "ISO_A2": "SY",
+    "ISO_A3": "SYR",
+    "ISO_Numeric": "760",
+    "FIPS": "SY",
+    "Country": "Syria"
+  },
+  {
+    "ISO_A2": "SZ",
+    "ISO_A3": "SWZ",
+    "ISO_Numeric": "748",
+    "FIPS": "WZ",
+    "Country": "Eswatini"
+  },
+  {
+    "ISO_A2": "TC",
+    "ISO_A3": "TCA",
+    "ISO_Numeric": "796",
+    "FIPS": "TK",
+    "Country": "Turks and Caicos Islands"
+  },
+  {
+    "ISO_A2": "TD",
+    "ISO_A3": "TCD",
+    "ISO_Numeric": "148",
+    "FIPS": "CD",
+    "Country": "Chad"
+  },
+  {
+    "ISO_A2": "TF",
+    "ISO_A3": "ATF",
+    "ISO_Numeric": "260",
+    "FIPS": "FS",
+    "Country": "French Southern Territories"
+  },
+  {
+    "ISO_A2": "TG",
+    "ISO_A3": "TGO",
+    "ISO_Numeric": "768",
+    "FIPS": "TO",
+    "Country": "Togo"
+  },
+  {
+    "ISO_A2": "TH",
+    "ISO_A3": "THA",
+    "ISO_Numeric": "764",
+    "FIPS": "TH",
+    "Country": "Thailand"
+  },
+  {
+    "ISO_A2": "TJ",
+    "ISO_A3": "TJK",
+    "ISO_Numeric": "762",
+    "FIPS": "TI",
+    "Country": "Tajikistan"
+  },
+  {
+    "ISO_A2": "TK",
+    "ISO_A3": "TKL",
+    "ISO_Numeric": "772",
+    "FIPS": "TL",
+    "Country": "Tokelau"
+  },
+  {
+    "ISO_A2": "TL",
+    "ISO_A3": "TLS",
+    "ISO_Numeric": "626",
+    "FIPS": "TT",
+    "Country": "Timor-Leste"
+  },
+  {
+    "ISO_A2": "TM",
+    "ISO_A3": "TKM",
+    "ISO_Numeric": "795",
+    "FIPS": "TX",
+    "Country": "Turkmenistan"
+  },
+  {
+    "ISO_A2": "TN",
+    "ISO_A3": "TUN",
+    "ISO_Numeric": "788",
+    "FIPS": "TS",
+    "Country": "Tunisia"
+  },
+  {
+    "ISO_A2": "TO",
+    "ISO_A3": "TON",
+    "ISO_Numeric": "776",
+    "FIPS": "TN",
+    "Country": "Tonga"
+  },
+  {
+    "ISO_A2": "TR",
+    "ISO_A3": "TUR",
+    "ISO_Numeric": "792",
+    "FIPS": "TU",
+    "Country": "Türkiye"
+  },
+  {
+    "ISO_A2": "TT",
+    "ISO_A3": "TTO",
+    "ISO_Numeric": "780",
+    "FIPS": "TD",
+    "Country": "Trinidad and Tobago"
+  },
+  {
+    "ISO_A2": "TV",
+    "ISO_A3": "TUV",
+    "ISO_Numeric": "798",
+    "FIPS": "TV",
+    "Country": "Tuvalu"
+  },
+  {
+    "ISO_A2": "TW",
+    "ISO_A3": "TWN",
+    "ISO_Numeric": "158",
+    "FIPS": "TW",
+    "Country": "Taiwan"
+  },
+  {
+    "ISO_A2": "TZ",
+    "ISO_A3": "TZA",
+    "ISO_Numeric": "834",
+    "FIPS": "TZ",
+    "Country": "Tanzania"
+  },
+  {
+    "ISO_A2": "UA",
+    "ISO_A3": "UKR",
+    "ISO_Numeric": "804",
+    "FIPS": "UP",
+    "Country": "Ukraine"
+  },
+  {
+    "ISO_A2": "UG",
+    "ISO_A3": "UGA",
+    "ISO_Numeric": "800",
+    "FIPS": "UG",
+    "Country": "Uganda"
+  },
+  {
+    "ISO_A2": "UM",
+    "ISO_A3": "UMI",
+    "ISO_Numeric": "581",
+    "FIPS": "",
+    "Country": "U.S. Outlying Islands"
+  },
+  {
+    "ISO_A2": "US",
+    "ISO_A3": "USA",
+    "ISO_Numeric": "840",
+    "FIPS": "US",
+    "Country": "United States"
+  },
+  {
+    "ISO_A2": "UY",
+    "ISO_A3": "URY",
+    "ISO_Numeric": "858",
+    "FIPS": "UY",
+    "Country": "Uruguay"
+  },
+  {
+    "ISO_A2": "UZ",
+    "ISO_A3": "UZB",
+    "ISO_Numeric": "860",
+    "FIPS": "UZ",
+    "Country": "Uzbekistan"
+  },
+  {
+    "ISO_A2": "VA",
+    "ISO_A3": "VAT",
+    "ISO_Numeric": "336",
+    "FIPS": "VT",
+    "Country": "Vatican City"
+  },
+  {
+    "ISO_A2": "VC",
+    "ISO_A3": "VCT",
+    "ISO_Numeric": "670",
+    "FIPS": "VC",
+    "Country": "St Vincent and Grenadines"
+  },
+  {
+    "ISO_A2": "VE",
+    "ISO_A3": "VEN",
+    "ISO_Numeric": "862",
+    "FIPS": "VE",
+    "Country": "Venezuela"
+  },
+  {
+    "ISO_A2": "VG",
+    "ISO_A3": "VGB",
+    "ISO_Numeric": "092",
+    "FIPS": "VI",
+    "Country": "British Virgin Islands"
+  },
+  {
+    "ISO_A2": "VI",
+    "ISO_A3": "VIR",
+    "ISO_Numeric": "850",
+    "FIPS": "VQ",
+    "Country": "U.S. Virgin Islands"
+  },
+  {
+    "ISO_A2": "VN",
+    "ISO_A3": "VNM",
+    "ISO_Numeric": "704",
+    "FIPS": "VM",
+    "Country": "Vietnam"
+  },
+  {
+    "ISO_A2": "VU",
+    "ISO_A3": "VUT",
+    "ISO_Numeric": "548",
+    "FIPS": "NH",
+    "Country": "Vanuatu"
+  },
+  {
+    "ISO_A2": "WF",
+    "ISO_A3": "WLF",
+    "ISO_Numeric": "876",
+    "FIPS": "WF",
+    "Country": "Wallis and Futuna"
+  },
+  {
+    "ISO_A2": "WS",
+    "ISO_A3": "WSM",
+    "ISO_Numeric": "882",
+    "FIPS": "WS",
+    "Country": "Samoa"
+  },
+  {
+    "ISO_A2": "XK",
+    "ISO_A3": "XKX",
+    "ISO_Numeric": "0",
+    "FIPS": "KV",
+    "Country": "Kosovo"
+  },
+  {
+    "ISO_A2": "YE",
+    "ISO_A3": "YEM",
+    "ISO_Numeric": "887",
+    "FIPS": "YM",
+    "Country": "Yemen"
+  },
+  {
+    "ISO_A2": "YT",
+    "ISO_A3": "MYT",
+    "ISO_Numeric": "175",
+    "FIPS": "MF",
+    "Country": "Mayotte"
+  },
+  {
+    "ISO_A2": "ZA",
+    "ISO_A3": "ZAF",
+    "ISO_Numeric": "710",
+    "FIPS": "SF",
+    "Country": "South Africa"
+  },
+  {
+    "ISO_A2": "ZM",
+    "ISO_A3": "ZMB",
+    "ISO_Numeric": "894",
+    "FIPS": "ZA",
+    "Country": "Zambia"
+  },
+  {
+    "ISO_A2": "ZW",
+    "ISO_A3": "ZWE",
+    "ISO_Numeric": "716",
+    "FIPS": "ZI",
+    "Country": "Zimbabwe"
+  }
+]

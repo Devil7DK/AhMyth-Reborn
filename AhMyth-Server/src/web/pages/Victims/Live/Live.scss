@@ -4,12 +4,24 @@ div.page-container.live {
     height: 100%;
 
     div.custom-toolbar {
-        > svg {
-            margin-right: 0.5em;
+        > div.fui-Switch {
+            align-items: center;
+
+            > label {
+                padding-left: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
         }
 
-        > span.fui-InfoLabel.victims-count {
-            margin-right: 3em;
+        > div.item {
+            > svg {
+                margin-right: 0.5em;
+            }
+
+            > span.fui-InfoLabel.victims-count {
+                margin-right: 3em;
+            }
         }
     }
 
@@ -17,12 +29,83 @@ div.page-container.live {
         display: flex;
         flex-direction: column;
         flex: 1;
-        overflow: hidden;
+        overflow: auto;
         position: relative;
 
-        > div.scroll-container {
-            flex: 1 1 1px;
-            overflow: auto;
+        > div.grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+            gap: 1em;
+
+            > div.victim-card {
+                border-radius: var(--borderRadiusMedium);
+                border: 0.1em solid var(--colorNeutralStroke1);
+                color: var(--colorNeutralForeground1);
+                padding: 0.5em;
+                overflow: hidden;
+                display: flex;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--colorNeutralBackground1Hover);
+                }
+
+                &:active {
+                    background-color: var(--colorNeutralBackground1Pressed);
+                }
+
+                > div.image-container {
+                    margin-right: 1em;
+                    width: 5em;
+
+                    > img,
+                    > svg {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                > div.victim-info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    overflow: hidden;
+
+                    > div {
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        align-items: center;
+                        display: flex;
+
+                        > svg {
+                            width: 1em;
+                            margin-right: 0.5em;
+                        }
+
+                        &.model {
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        > div.no-data {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+
+            > div.text {
+                font-size: 3em;
+                font-weight: 600;
+                color: var(--colorNeutralStroke1);
+                text-align: center;
+                line-height: 1em;
+            }
         }
     }
 }
