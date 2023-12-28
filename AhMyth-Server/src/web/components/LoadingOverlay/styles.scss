@@ -1,0 +1,17 @@
+div.custom-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    align-items: center;
+    justify-content: center;
+    background-color: var(--colorNeutralBackground1);
+
+    transition: opacity 0.5s ease-in-out;
+
+    > div.custom-loader > div {
+        background-color: var(--colorBrandBackground);
+    }
+}

@@ -1,0 +1,16 @@
+div.custom-toolbar {
+    background-color: var(--colorNeutralBackground6);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5em;
+    border-radius: 0.3em;
+    padding: 0.2em 0.7em;
+
+    > div.custom-toolbar-divider {
+        align-self: normal;
+        width: 0.1em;
+        background-color: var(--colorNeutralForegroundDisabled);
+        margin: 0.2em 0.5em;
+    }
+}

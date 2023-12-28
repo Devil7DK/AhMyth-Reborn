@@ -5,9 +5,11 @@ import React, {
     useMemo,
 } from 'react';
 
+import { SocketStore } from './SocketStore';
 import { ThemeStore } from './ThemeStore';
 
 export class RootStore {
+    public socketStore = new SocketStore();
     public themeStore = new ThemeStore();
 }
 

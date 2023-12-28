@@ -1,0 +1,28 @@
+div.page-container.live {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    div.custom-toolbar {
+        > svg {
+            margin-right: 0.5em;
+        }
+
+        > span.fui-InfoLabel.victims-count {
+            margin-right: 3em;
+        }
+    }
+
+    > div.table-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+
+        > div.scroll-container {
+            flex: 1 1 1px;
+            overflow: auto;
+        }
+    }
+}
