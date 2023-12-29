@@ -2,4 +2,46 @@ div.fui-DialogSurface.victim-device-modal {
     width: 90vw;
     max-width: unset;
     height: 90vh;
+    > div.fui-DialogBody {
+        height: 100%;
+        max-height: 100%;
+        overflow: hidden;
+
+        > div.fui-DialogContent {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            > div.custom-tab-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                padding-top: 1em;
+
+                &.camera {
+                    gap: 1em;
+
+                    > div.camera-controls {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        gap: 1em;
+                    }
+
+                    > div.camera-preview {
+                        flex: 1;
+                        overflow: hidden;
+
+                        > img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            background-color: var(--colorNeutralBackground6);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

