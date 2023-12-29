@@ -74,6 +74,51 @@ div.fui-DialogSurface.victim-device-modal {
                         }
                     }
                 }
+
+                &.microphone {
+                    > div.microphone-controls {
+                        align-items: center;
+                        display: flex;
+                        gap: 0.5em;
+                        justify-content: center;
+
+                        > span.fui-Input {
+                            > input {
+                                text-align: right;
+                            }
+                        }
+                    }
+
+                    > div.microphone-preview {
+                        flex: 1;
+                        overflow: hidden;
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 1em;
+
+                        > div.wave-audio-player {
+                            height: 30vh;
+                            width: 50vw;
+                            min-width: 30em;
+
+                            display: flex;
+                            flex-direction: column;
+                            gap: 3em;
+
+                            > div.wave-container {
+                                flex: 1;
+                            }
+
+                            > audio {
+                                width: 80%;
+                                min-height: 4em;
+                                align-self: center;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
