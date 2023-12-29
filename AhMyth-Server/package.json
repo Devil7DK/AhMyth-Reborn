@@ -57,6 +57,7 @@
     "sqlite3": "^5.1.6",
     "typedi": "^0.10.0",
     "typeorm": "^0.3.17",
+    "wavesurfer.js": "^7.6.0",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1"
   },
