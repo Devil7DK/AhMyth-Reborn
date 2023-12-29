@@ -15,7 +15,13 @@ export const logger = createLogger({
             format: format.combine(
                 format.colorize(),
                 format.printf(
-                    ({ level, message, timestamp, label = 'server' }) => {
+                    ({
+                        level,
+                        message,
+                        timestamp,
+                        label = 'server',
+                        ...rest
+                    }) => {
                         if (label === 'query' || label === 'query-slow')
                             message = highlight(message as string, {
                                 language: 'sql',
@@ -25,7 +31,11 @@ export const logger = createLogger({
                             'YYYY-MM-DD HH:mm:ss',
                         )}  [${new Array(7 - strip(level).length)
                             .fill(' ')
-                            .join('')}${level}]  [${label}] : ${message}`;
+                            .join('')}${level}]  [${label}] : ${message} ${
+                            Object.values(rest).length > 0
+                                ? JSON.stringify(rest)
+                                : ''
+                        }`;
                     },
                 ),
             ),
