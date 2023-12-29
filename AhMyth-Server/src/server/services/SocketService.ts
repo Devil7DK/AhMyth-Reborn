@@ -350,7 +350,9 @@ export class SocketService {
                 return;
             }
 
-            logger.info('Received socket connection from device', {
+            await socket.join(victim.deviceId);
+
+            logger.info('Received socket connection for device', {
                 label: 'socket',
                 action: 'connection',
             });
