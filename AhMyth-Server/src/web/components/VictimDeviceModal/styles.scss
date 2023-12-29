@@ -119,6 +119,12 @@ div.fui-DialogSurface.victim-device-modal {
                         }
                     }
                 }
+
+                &.location {
+                    > div.leaflet-container {
+                        flex: 1;
+                    }
+                }
             }
         }
     }

