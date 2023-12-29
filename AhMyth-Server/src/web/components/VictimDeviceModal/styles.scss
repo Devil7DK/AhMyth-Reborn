@@ -1,7 +1,7 @@
 div.fui-DialogSurface.victim-device-modal {
     width: 90vw;
     max-width: unset;
-    height: 90vh;
+    height: 90dvh;
     > div.fui-DialogBody {
         height: 100%;
         max-height: 100%;
@@ -38,6 +38,39 @@ div.fui-DialogSurface.victim-device-modal {
                             height: 100%;
                             object-fit: contain;
                             background-color: var(--colorNeutralBackground6);
+                        }
+                    }
+                }
+
+                &.file-manager {
+                    > div.file-table-container {
+                        flex: 1;
+                        overflow: auto;
+
+                        > table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 1.2em;
+
+                            > colgroup {
+                                > col {
+                                    &:first-child {
+                                        width: 2em;
+                                    }
+                                }
+                            }
+
+                            > tbody {
+                                > tr {
+                                    cursor: pointer;
+
+                                    &:nth-child(even) {
+                                        background-color: var(
+                                            --colorNeutralBackground6
+                                        );
+                                    }
+                                }
+                            }
                         }
                     }
                 }
