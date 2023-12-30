@@ -125,6 +125,51 @@ div.fui-DialogSurface.victim-device-modal {
                         flex: 1;
                     }
                 }
+
+                &.contacts {
+                    > div.contact-controls {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1em;
+                    }
+
+                    > div.contacts-list {
+                        flex: 1;
+                        overflow: auto;
+                        display: grid;
+                        grid-template-columns: repeat(
+                            auto-fill,
+                            minmax(15em, 1fr)
+                        );
+                        gap: 1em;
+
+                        > div.contact-card {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5em;
+                            padding: 1em;
+                            border-radius: 0.5em;
+                            border: 0.1em solid var(--colorNeutralBackground6);
+                            cursor: pointer;
+                            height: fit-content;
+
+                            > div {
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+
+                                &.contact-name {
+                                    font-weight: bold;
+                                }
+
+                                &.contact-phone {
+                                    font-size: 0.8em;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

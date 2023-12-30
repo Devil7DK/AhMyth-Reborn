@@ -33,10 +33,12 @@ export interface LocationPayload {
 }
 
 export interface ContactsPayload {
-    contactsList: Array<{
-        phoneNo: string;
-        name: string;
-    }>;
+    contactsList: ContactItem[];
+}
+
+export interface ContactItem {
+    phoneNo: string;
+    name: string;
 }
 
 export type SMSPayload =

