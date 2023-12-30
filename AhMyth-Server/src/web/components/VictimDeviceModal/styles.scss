@@ -12,7 +12,7 @@ div.fui-DialogSurface.victim-device-modal {
             flex-direction: column;
             overflow: hidden;
 
-            > div.custom-tab-content {
+            div.custom-tab-content {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
@@ -165,6 +165,67 @@ div.fui-DialogSurface.victim-device-modal {
 
                                 &.contact-phone {
                                     font-size: 0.8em;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.sms {
+                    padding-top: 0;
+
+                    > div.custom-tab-content {
+                        padding: 1em 1em 0 1em;
+
+                        &.send-sms {
+                            gap: 1em;
+
+                            > div.fui-Field.message {
+                                flex: 1;
+
+                                grid-template-rows: auto 1fr;
+                            }
+                        }
+
+                        &.view-sms {
+                            > div.sms-controls {
+                                align-items: center;
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 1em;
+                            }
+
+                            > div.sms-messages {
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fill,
+                                    minmax(20em, 1fr)
+                                );
+                                gap: 1em;
+                                overflow: auto;
+
+                                > div.sms-card {
+                                    display: flex;
+                                    border-radius: var(--borderRadiusMedium);
+                                    border: 0.1em solid
+                                        var(--colorNeutralBackground6);
+                                    padding: 1em;
+                                    gap: 1em;
+
+                                    > div.sms-content {
+                                        flex: 1;
+                                        overflow: hidden;
+                                        display: flex;
+                                        flex-direction: column;
+
+                                        > div {
+                                            overflow: hidden;
+
+                                            &.sender {
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

