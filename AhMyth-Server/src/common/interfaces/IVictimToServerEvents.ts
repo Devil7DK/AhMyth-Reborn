@@ -53,12 +53,14 @@ export interface SMSItem {
 }
 
 export interface CallLogPayload {
-    callsList: Array<{
-        phoneNo: string;
-        name: string;
-        duration: string;
-        type: number;
-    }>;
+    callsList: CallLogItem[];
+}
+
+export interface CallLogItem {
+    phoneNo: string;
+    name: string;
+    duration: string;
+    type: number;
 }
 
 type OrderCallback<T> = (data: T) => void;

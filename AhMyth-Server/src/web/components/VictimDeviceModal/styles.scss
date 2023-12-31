@@ -231,6 +231,76 @@ div.fui-DialogSurface.victim-device-modal {
                         }
                     }
                 }
+
+                &.calls {
+                    > div.call-controls {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1em;
+                    }
+
+                    > div.calls-list {
+                        flex: 1;
+                        display: grid;
+                        grid-template-columns: repeat(
+                            auto-fill,
+                            minmax(20em, 1fr)
+                        );
+                        gap: 1em;
+                        overflow: auto;
+
+                        > div.call-card {
+                            display: flex;
+                            gap: 1em;
+                            padding: 1em;
+                            border-radius: 0.5em;
+                            border: 0.1em solid var(--colorNeutralBackground6);
+                            height: fit-content;
+
+                            > div.call-type {
+                                align-items: center;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+
+                                > img {
+                                    height: 4em;
+                                    width: 4em;
+                                    object-fit: contain;
+                                }
+
+                                > span {
+                                    font-size: 0.8em;
+                                }
+                            }
+
+                            > div.call-info {
+                                display: flex;
+                                flex-direction: column;
+                                overflow: hidden;
+
+                                > div {
+                                    overflow: hidden;
+                                    align-items: center;
+                                    display: flex;
+                                    gap: 0.5em;
+
+                                    > span {
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                    }
+
+                                    &.call-name,
+                                    &.call-number {
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
