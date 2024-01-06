@@ -5,11 +5,11 @@ import React, {
     useMemo,
 } from 'react';
 
-import { SocketStore } from './SocketStore';
 import { ThemeStore } from './ThemeStore';
+import { VictimsSocketStore } from './VictimsSocketStore';
 
 export class RootStore {
-    public socketStore = new SocketStore();
+    public victimsSocketStore = new VictimsSocketStore();
     public themeStore = new ThemeStore();
 }
 

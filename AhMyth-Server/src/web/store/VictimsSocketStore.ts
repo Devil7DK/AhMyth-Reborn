@@ -17,7 +17,7 @@ import {
 } from '../../common/interfaces';
 import { VictimDeviceStore } from './VictimDeviceStore';
 
-export class SocketStore {
+export class VictimsSocketStore {
     public readonly socket: Socket<IServerToWebEvents, IWebToServerEvents>;
 
     public connectionStatus: ConnectionStatus = ConnectionStatus.DISCONNECTED;
@@ -28,6 +28,9 @@ export class SocketStore {
 
     constructor() {
         this.socket = io(SOCKET_NAMESPACE_WEB, {
+            query: {
+                page: 'victims',
+            },
             autoConnect: false,
             forceNew: true,
         });

@@ -26,10 +26,14 @@ import { config } from '../config';
 import { type VictimEntity } from '../entities';
 import { logger } from '../logger';
 import { parseDuration, parseSize } from '../utils/Common';
+import { PayloadService } from './PayloadService';
 import { VictimService } from './VictimService';
 
 @Service()
 export class SocketService {
+    @Inject(() => PayloadService)
+    private readonly payloadService!: PayloadService;
+
     @Inject(() => VictimService)
     private readonly victimService!: VictimService;
 
@@ -316,11 +320,28 @@ export class SocketService {
             });
 
             // TODO: Add authentication for web socket connections
+            if (
+                socket.handshake.query?.page !== 'payloads' &&
+                socket.handshake.query?.page !== 'victims'
+            ) {
+                logger.warn('Socket connection for web rejected', {
+                    label: 'socket',
+                    action: 'connection',
+                    query: socket.handshake.query,
+                });
+                socket.disconnect();
+                return;
+            }
 
-            socket.emit(
-                ServerToWebEvents.VICTIM_LISTENING_STATUS,
-                this.listening,
-            );
+            if (socket.handshake.query?.page === 'payloads') {
+                const payloads = await this.payloadService.list();
+                socket.emit(ServerToWebEvents.PAYLOAD_LIST, payloads);
+            } else if (socket.handshake.query?.page === 'victims') {
+                socket.emit(
+                    ServerToWebEvents.VICTIM_LISTENING_STATUS,
+                    this.listening,
+                );
+            }
 
             this.setupWebListeners(socket).catch((error) => {
                 logger.error('Failed to handle socket connection for web!', {
