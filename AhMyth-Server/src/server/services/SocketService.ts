@@ -317,7 +317,7 @@ export class SocketService {
 
             // TODO: Add authentication for web socket connections
 
-            this.webNS.emit(
+            socket.emit(
                 ServerToWebEvents.VICTIM_LISTENING_STATUS,
                 this.listening,
             );
