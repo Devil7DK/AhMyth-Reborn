@@ -34,7 +34,7 @@ export class SocketService {
     private readonly victimService!: VictimService;
 
     private readonly io: Server<IVictimToServerEvents, IServerToVictimEvents>;
-    private readonly webNS: Namespace<IWebToServerEvents, IServerToWebEvents>;
+    public readonly webNS: Namespace<IWebToServerEvents, IServerToWebEvents>;
     private readonly deviceNS: Namespace;
     private _listening: boolean = false;
 
