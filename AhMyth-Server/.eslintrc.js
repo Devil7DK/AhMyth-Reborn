@@ -27,6 +27,7 @@ module.exports = {
     },
     plugins: ['react', 'simple-import-sort', 'import'],
     rules: {
+        '@typescript-eslint/strict-boolean-expressions': 'off',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
         'import/first': 'error',
