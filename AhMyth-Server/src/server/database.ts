@@ -116,10 +116,12 @@ VictimModel.init(
         createdAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
         updatedAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
     },
     {
@@ -179,10 +181,12 @@ PayloadLogModel.init(
         createdAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
         updatedAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
     },
     {
@@ -276,7 +280,9 @@ PayloadModel.init(
             set(value: VictimOrder[]) {
                 this.setDataValue(
                     'permissions',
-                    value.join(',') as unknown as VictimOrder[],
+                    (Array.isArray(value)
+                        ? value.join(',')
+                        : '') as unknown as VictimOrder[],
                 );
             },
         },
@@ -293,10 +299,12 @@ PayloadModel.init(
         createdAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
         updatedAt: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            defaultValue: () => Date.now(),
         },
     },
     {
