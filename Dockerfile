@@ -11,7 +11,9 @@ RUN chmod a+x ./gradlew && ./gradlew assembleRelease
 # Decompile the APK
 RUN java -jar apktool.jar d ./app/build/outputs/apk/release/app-release-unsigned.apk -o ./app-release
 
-FROM node:18-alpine AS server-base
+FROM alvrme/alpine-android:android-29-jdk11 AS server-base
+
+RUN apk add --no-cache nodejs yarn
 
 WORKDIR /app
 
