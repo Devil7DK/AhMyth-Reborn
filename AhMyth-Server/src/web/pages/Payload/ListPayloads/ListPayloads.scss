@@ -1,0 +1,27 @@
+@keyframes status-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+div.page-container.payloads {
+    overflow: auto;
+    height: 100%;
+
+    > div.payloads-list {
+        display: grid;
+        gap: 1em;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(auto-fill, minmax(30em, 1fr));
+        }
+
+        @media (max-width: 767px) {
+            grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+        }
+    }
+}

@@ -12,3 +12,14 @@ div#root > div.fui-FluentProvider {
 div.fill {
     flex: 1;
 }
+
+div.grouped-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 1em;
+
+    @media (max-width: 720px) {
+        grid-template-columns: 1fr;
+    }
+}

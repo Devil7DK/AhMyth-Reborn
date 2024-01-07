@@ -131,3 +131,7 @@ dist
 
 # Database
 *.sqlite*
+
+# APK files
+extracted_apk/
+apk/

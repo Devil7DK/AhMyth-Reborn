@@ -1,0 +1,151 @@
+div.payload-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--borderRadiusMedium);
+    border: 0.1em solid var(--colorNeutralStroke1);
+    padding: 0.5em;
+    min-height: 20em;
+    transition: min-height 0.2s ease-in-out;
+    position: relative;
+
+    &.expanded {
+        grid-column: 1/-1;
+        min-height: 40em;
+        max-height: 40em;
+    }
+
+    > div.logs-container {
+        flex: 1;
+        overflow: auto;
+        margin-top: 0.5em;
+        border-top: 0.1em solid var(--colorNeutralStroke1);
+        background-color: #303030;
+
+        > div.logs-list {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            min-width: 50em;
+
+            > div.log-row {
+                display: contents;
+
+                > div {
+                    padding: 0.3em 0.5em;
+
+                    > div.with-icon {
+                        align-items: center;
+                        display: flex;
+
+                        > svg {
+                            margin-right: 0.5em;
+                        }
+
+                        &.status {
+                            > span {
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+
+                &.inprogress {
+                    color: #a4c3ff;
+
+                    div.with-icon.status {
+                        > svg {
+                            animation: status-spin 2s linear infinite;
+                        }
+                    }
+                }
+
+                &.success {
+                    color: #a4ffa4;
+                }
+
+                &.failed {
+                    color: #ff9b9b;
+                }
+            }
+        }
+    }
+
+    > div.info-container {
+        display: flex;
+
+        > div.info {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 0.5em;
+            row-gap: 0.8em;
+            flex: 1;
+            overflow: hidden;
+
+            > svg {
+                color: var(--colorNeutralForeground4);
+                height: 2em;
+                width: 2em;
+            }
+
+            > div.value {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3em;
+                overflow: hidden;
+
+                > div {
+                    line-height: 1em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    &.label {
+                        color: var(--colorNeutralForeground4);
+                        font-size: 0.8em;
+                    }
+
+                    &.text {
+                        color: var(--colorNeutralForeground3);
+                        font-weight: 600;
+                    }
+                }
+
+                &.permissions {
+                    > div.text {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 0.5em;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+                }
+
+                &.status {
+                    > div.text {
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+            > svg.status.inprogress {
+                animation: status-spin 2s linear infinite;
+            }
+
+            > div.actions {
+                grid-column: 1 / -1;
+                border-top: 0.1em solid var(--colorNeutralStroke1);
+                padding-top: 0.5em;
+                display: flex;
+
+                svg {
+                    color: var(--colorCompoundBrandForeground1);
+                }
+
+                > button.delete {
+                    > span > svg {
+                        color: var(--colorStatusDangerForeground1);
+                    }
+                }
+            }
+        }
+    }
+}

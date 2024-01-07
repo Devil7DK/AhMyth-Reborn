@@ -5,12 +5,15 @@ import React, {
     useMemo,
 } from 'react';
 
+import { PayloadsSocketStore } from './PayloadsSocketStore';
 import { ThemeStore } from './ThemeStore';
 import { VictimsSocketStore } from './VictimsSocketStore';
 
 export class RootStore {
-    public victimsSocketStore = new VictimsSocketStore();
     public themeStore = new ThemeStore();
+
+    public payloadsSocketStore = new PayloadsSocketStore();
+    public victimsSocketStore = new VictimsSocketStore();
 }
 
 const StoreContext = createContext({} as unknown as RootStore);
@@ -26,3 +29,6 @@ export const StoreProvider: React.FC<PropsWithChildren<unknown>> = ({
 };
 
 export const useStore = (): RootStore => useContext(StoreContext);
+
+export * from './PayloadsSocketStore';
+export * from './VictimsSocketStore';

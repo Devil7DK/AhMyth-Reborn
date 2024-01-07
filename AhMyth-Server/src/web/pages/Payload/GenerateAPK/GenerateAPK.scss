@@ -1,0 +1,35 @@
+div.page-container.generate-apk {
+    div.fui-Divider {
+        &:empty {
+            margin: 2em 0;
+        }
+
+        &:not(:first-child) {
+            margin-top: 2em;
+        }
+    }
+
+    div.fui-Field.file-input {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        column-gap: 0.5em;
+        margin-bottom: 1em;
+
+        > span.fui-Input {
+            min-width: 5em;
+        }
+
+        > div.fui-Field__validationMessage,
+        > label.fui-Label {
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+    }
+
+    div.actions {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+    }
+}

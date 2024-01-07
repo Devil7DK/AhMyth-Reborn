@@ -13,7 +13,12 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Navigation24Regular } from '@fluentui/react-icons';
 import { faAndroid } from '@fortawesome/free-brands-svg-icons';
-import { faEye, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBoxesStacked,
+    faEye,
+    faMoon,
+    faSun,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
@@ -42,7 +47,13 @@ const links = [
                 title: 'Generate APK',
                 subtitle: 'Build/Patch APK for Android',
                 icon: <FontAwesomeIcon icon={faAndroid} />,
-                url: '/payload',
+                url: '/payload/generate',
+            },
+            {
+                title: 'List APKs',
+                subtitle: 'View Generated APKs',
+                icon: <FontAwesomeIcon icon={faBoxesStacked} />,
+                url: '/payload/list',
             },
         ],
     },

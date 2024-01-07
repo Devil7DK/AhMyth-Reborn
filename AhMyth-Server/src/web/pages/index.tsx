@@ -15,7 +15,7 @@ export const Pages: React.FC = () => {
                 <Route index element={<Navigate to='/victims' />} />
 
                 <Route path='/victims/*' element={<Victims />} />
-                <Route path='/payload' element={<Payload />} />
+                <Route path='/payload/*' element={<Payload />} />
             </Route>
 
             <Route path='*' element={<Navigate to='/404' />} />

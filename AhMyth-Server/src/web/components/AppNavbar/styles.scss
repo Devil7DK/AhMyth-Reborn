@@ -33,6 +33,10 @@ div.fui-Drawer.nav-drawer {
             > span.fui-Button__icon {
                 margin-right: 0.8em;
             }
+
+            & + button.fui-Button {
+                margin-top: 0.5em;
+            }
         }
     }
 }
