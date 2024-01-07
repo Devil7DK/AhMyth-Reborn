@@ -49,6 +49,7 @@ export const logger = createLogger({
             ),
         }),
         new DailyRotateFile({
+            format: format.json(),
             filename: 'logs/%DATE%.log',
             datePattern: 'YYYY-MM-DD-HH',
             zippedArchive: true,
