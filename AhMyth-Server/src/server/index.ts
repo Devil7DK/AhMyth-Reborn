@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 
-import { useContainer as useContainerClassValidator } from 'class-validator';
 import dayjs from 'dayjs';
 import express, { type Application } from 'express';
 import expressStaticGzip from 'express-static-gzip';
@@ -23,7 +22,6 @@ import { logger } from './logger';
 import { PayloadService, SocketService } from './services';
 import { getPublicDir, timeConversion } from './utils/Common';
 
-useContainerClassValidator(Container);
 useContainerRoutingControllers(Container);
 
 logger.verbose(`Initializing express app in ${config.NODE_ENV} mode.`, {
