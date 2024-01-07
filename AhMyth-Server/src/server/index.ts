@@ -164,14 +164,17 @@ function setupRoutes(): void {
         const indexGz = `${index}.gz`;
 
         res.set('Content-Type', 'text/html; charset=UTF-8');
+        res.set('Vary', 'Accept-Encoding');
 
         if (typeof encodings === 'string') {
             if (encodings.includes('br') && existsSync(indexBr)) {
                 res.set('Content-Encoding', 'br');
                 res.sendFile(indexBr);
+                return;
             } else if (encodings.includes('gzip') && existsSync(indexGz)) {
                 res.set('Content-Encoding', 'gzip');
                 res.sendFile(indexGz);
+                return;
             }
         }
 
