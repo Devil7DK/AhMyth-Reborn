@@ -6,6 +6,7 @@ import expressStaticGzip from 'express-static-gzip';
 import { existsSync, readFileSync } from 'fs';
 import { createServer as createHttpServer } from 'http';
 import { createServer as createHttpsServer } from 'https';
+import morgan from 'morgan';
 import { join, resolve } from 'path';
 import {
     useContainer as useContainerRoutingControllers,
@@ -40,12 +41,28 @@ logger.verbose(`Found public directory at ${publicDir}`, {
 });
 
 function setupRoutes(): void {
+    const morganMiddleware = morgan(
+        ':method :url :status :res[content-length] - :response-time ms',
+        {
+            stream: {
+                // Configure Morgan to use our custom logger with the http severity
+                write: (message) =>
+                    logger.http(message.trim(), {
+                        label: 'server',
+                        action: 'http',
+                    }),
+            },
+        },
+    );
+
     app.use(
         express.urlencoded({
             extended: false,
         }),
     );
     app.use(express.json());
+
+    app.use(morganMiddleware);
 
     // Implement HTTP basic auth
     app.use((req, res, next) => {
