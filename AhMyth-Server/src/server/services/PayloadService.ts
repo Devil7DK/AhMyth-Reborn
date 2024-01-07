@@ -1,23 +1,21 @@
-import { relative } from 'path';
+import { rename } from 'fs-extra';
+import { resolve } from 'path';
 import Queue from 'queue';
-import Container, { Inject, Service } from 'typedi';
-import { DataSource, type Repository } from 'typeorm';
+import Container, { Service } from 'typedi';
 
 import { PayloadStatus, ServerToWebEvents } from '../../common/enums';
 import { type IGenerateAPKPayload } from '../../common/interfaces';
 import { config } from '../config';
-import { PayloadEntity } from '../entities';
+import { PayloadModel } from '../database';
 import { logger } from '../logger';
 import { buildAPK } from '../utils/APKBuilder';
 import { SocketService } from './SocketService';
 
 @Service()
 export class PayloadService {
-    private readonly payloadRepository: Repository<PayloadEntity>;
     private readonly jobQueue: Queue;
 
-    public constructor(@Inject(() => DataSource) dataSource: DataSource) {
-        this.payloadRepository = dataSource.getRepository(PayloadEntity);
+    public constructor() {
         this.jobQueue = new Queue({
             concurrency: 1,
             autostart: true,
@@ -28,28 +26,27 @@ export class PayloadService {
             action: 'queue-pending',
         });
 
-        this.payloadRepository
-            .find({ where: { status: PayloadStatus.PENDING } })
-            .then((payloads) => {
-                logger.info(`Found ${payloads.length} pending payloads!`, {
-                    label: 'payload',
-                    action: 'queue-pending',
-                });
+        // PayloadModel.findAll({ where: { status: PayloadStatus.PENDING } })
+        //     .then((payloads) => {
+        //         logger.info(`Found ${payloads.length} pending payloads!`, {
+        //             label: 'payload',
+        //             action: 'queue-pending',
+        //         });
 
-                payloads.forEach((payload) => {
-                    this.queueJob(payload);
-                });
-            })
-            .catch((error) => {
-                logger.error('Failed to queue pending payloads!', {
-                    error,
-                    label: 'payload',
-                    action: 'queue-pending',
-                });
-            });
+        //         payloads.forEach((payload) => {
+        //             this.queueJob(payload);
+        //         });
+        //     })
+        //     .catch((error) => {
+        //         logger.error('Failed to queue pending payloads!', {
+        //             error,
+        //             label: 'payload',
+        //             action: 'queue-pending',
+        //         });
+        //     });
     }
 
-    private queueJob(payload: PayloadEntity): void {
+    private queueJob(payload: PayloadModel): void {
         logger.verbose(`Queuing payload ${payload.id}...`, {
             label: 'payload',
             action: 'queue',
@@ -102,46 +99,59 @@ export class PayloadService {
     public async create(
         payload: IGenerateAPKPayload,
         existingAPK: Express.Multer.File | undefined,
-    ): Promise<PayloadEntity> {
+    ): Promise<PayloadModel> {
         // Can't inject SocketService at the top of the file because of circular dependency
         const socketService = Container.get(SocketService);
 
-        const payloadEntity = this.payloadRepository.create({
+        const payloadModel = await PayloadModel.create({
             ...payload,
             status: PayloadStatus.PENDING,
             existingAPKName: existingAPK?.originalname,
-            existingAPK: relative(
-                config.APK_UPLOAD_PATH,
-                existingAPK?.path ?? '',
-            ),
         });
 
-        const updatedEntity = await this.payloadRepository.save(payloadEntity);
+        try {
+            if (existingAPK) {
+                await rename(
+                    existingAPK.path,
+                    resolve(
+                        process.cwd(),
+                        config.APK_UPLOAD_PATH,
+                        `${payloadModel.id}.apk`,
+                    ),
+                );
+            }
+        } catch (error) {
+            logger.error('Failed to move existing APK file!', {
+                error,
+                label: 'payload',
+                action: 'create',
+            });
+        }
 
         socketService.payloadsRoom.emit(
             ServerToWebEvents.PAYLOAD_ADDED,
-            updatedEntity,
+            payloadModel,
         );
 
         // Don't queue the job immediately, wait 3 seconds to allow the client to connect
         setTimeout(() => {
-            this.queueJob(updatedEntity);
+            this.queueJob(payloadModel);
         }, 3000);
 
-        return updatedEntity;
+        return payloadModel;
     }
 
-    public async findById(id: string): Promise<PayloadEntity | null> {
-        return await this.payloadRepository.findOne({ where: { id } });
+    public async findById(id: string): Promise<PayloadModel | null> {
+        return await PayloadModel.findOne({ where: { id } });
     }
 
-    public async list(): Promise<PayloadEntity[]> {
-        return await this.payloadRepository.find({
-            order: { createdAt: 'DESC' },
+    public async list(): Promise<PayloadModel[]> {
+        return await PayloadModel.findAll({
+            order: [['createdAt', 'DESC']],
         });
     }
 
     public async delete(id: string): Promise<void> {
-        await this.payloadRepository.delete({ id });
+        await PayloadModel.destroy({ where: { id } });
     }
 }

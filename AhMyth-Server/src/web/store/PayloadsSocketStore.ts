@@ -12,13 +12,13 @@ import {
     type VictimOrder,
 } from '../../common/enums';
 import {
-    type IPayloadEntity,
-    type IPayloadLogEntity,
+    type IPayloadLogModel,
+    type IPayloadModel,
     type IServerToWebEvents,
     type IWebToServerEvents,
 } from '../../common/interfaces';
 
-export class PayloadLogItem implements IPayloadLogEntity {
+export class PayloadLogItem implements IPayloadLogModel {
     public id!: string;
     public payloadId!: string;
     public status!: PayloadLogStatus;
@@ -27,13 +27,13 @@ export class PayloadLogItem implements IPayloadLogEntity {
     public createdAt!: number;
     public updatedAt!: number;
 
-    public constructor(data: IPayloadLogEntity) {
+    public constructor(data: IPayloadLogModel) {
         this.copyFrom(data);
 
         makeAutoObservable(this);
     }
 
-    public copyFrom(data: IPayloadLogEntity): this {
+    public copyFrom(data: IPayloadLogModel): this {
         this.id = data.id;
         this.payloadId = data.payloadId;
         this.status = data.status;
@@ -46,7 +46,7 @@ export class PayloadLogItem implements IPayloadLogEntity {
     }
 }
 
-export class PayloadItem implements IPayloadEntity {
+export class PayloadItem implements IPayloadModel {
     public id!: string;
     public server!: string;
     public port!: number;
@@ -59,13 +59,13 @@ export class PayloadItem implements IPayloadEntity {
     public createdAt!: number;
     public updatedAt!: number;
 
-    public constructor(data: IPayloadEntity) {
+    public constructor(data: IPayloadModel) {
         this.copyFrom(data);
 
         makeAutoObservable(this);
     }
 
-    public copyFrom(data: IPayloadEntity): this {
+    public copyFrom(data: IPayloadModel): this {
         this.id = data.id;
         this.server = data.server;
         this.port = data.port;
@@ -89,11 +89,11 @@ export class PayloadItem implements IPayloadEntity {
         return this;
     }
 
-    public addLog(log: IPayloadLogEntity): void {
+    public addLog(log: IPayloadLogModel): void {
         this.logs.push(new PayloadLogItem(log));
     }
 
-    public updateLog(log: IPayloadLogEntity): void {
+    public updateLog(log: IPayloadLogModel): void {
         this.logs?.find((l) => l.id === log.id)?.copyFrom(log);
     }
 }
@@ -205,7 +205,7 @@ export class PayloadsSocketStore {
         this.connectionStatus = connectionStatus;
     }
 
-    public setPayloads(payloads: IPayloadEntity[]): void {
+    public setPayloads(payloads: IPayloadModel[]): void {
         this.payloads = payloads.map(
             (payload) =>
                 this.payloads
@@ -214,11 +214,11 @@ export class PayloadsSocketStore {
         );
     }
 
-    public addPayload(payload: IPayloadEntity): void {
+    public addPayload(payload: IPayloadModel): void {
         this.payloads.push(new PayloadItem(payload));
     }
 
-    public updatePayload(payload: IPayloadEntity): void {
+    public updatePayload(payload: IPayloadModel): void {
         this.payloads?.find((p) => p.id === payload.id)?.copyFrom(payload);
     }
 

@@ -28,7 +28,7 @@ import {
     type IWebToServerEvents,
 } from '../../common/interfaces';
 import { config } from '../config';
-import { type VictimEntity } from '../entities';
+import { type VictimModel } from '../database';
 import { logger } from '../logger';
 import { parseDuration, parseSize } from '../utils/Common';
 import { PayloadService } from './PayloadService';
@@ -100,7 +100,7 @@ export class SocketService {
     }
 
     private async setupVictimDeviceListeners(
-        victim: VictimEntity,
+        victim: VictimModel,
         socket: Socket<IServerToVictimEvents, IServerToVictimEvents>,
     ): Promise<void> {
         socket.on(ServerToVictimEvents.VICTIM_ORDER, (payload) => {
@@ -371,7 +371,7 @@ export class SocketService {
         });
 
         this.deviceNS.on('connection', async (socket: Socket) => {
-            let victim: VictimEntity | null = null;
+            let victim: VictimModel | null = null;
 
             if (
                 typeof socket.handshake.query?.deviceId !== 'string' ||

@@ -1,7 +1,7 @@
 import { type PayloadLogStatus } from '../enums';
-import { type IBaseEntity } from './IBaseEntity';
+import { type IBaseModel } from './IBaseModel';
 
-export interface IPayloadLogEntity extends IBaseEntity {
+export interface IPayloadLogModel extends IBaseModel {
     payloadId: string;
     status: PayloadLogStatus;
     message: string;

@@ -1,7 +1,6 @@
 import { strip } from '@colors/colors';
 import { highlight } from 'cli-highlight';
 import dayjs from 'dayjs';
-import { type Logger } from 'typeorm';
 import { createLogger, format, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 
@@ -14,6 +13,15 @@ const formatError = format((info) => {
     }
     return info;
 });
+
+const getStringifiedObject = (object: Record<string, unknown>): string => {
+    try {
+        return JSON.stringify(object);
+    } catch (error) {
+        console.log(object);
+        return '';
+    }
+};
 
 export const logger = createLogger({
     level: config.LOG_LEVEL,
@@ -30,7 +38,7 @@ export const logger = createLogger({
                         label = 'server',
                         ...rest
                     }) => {
-                        if (label === 'query' || label === 'query-slow')
+                        if (label === 'query')
                             message = highlight(message as string, {
                                 language: 'sql',
                             });
@@ -41,7 +49,7 @@ export const logger = createLogger({
                             .fill(' ')
                             .join('')}${level}]  [${label}] : ${message} ${
                             Object.values(rest).length > 0
-                                ? JSON.stringify(rest)
+                                ? getStringifiedObject(rest)
                                 : ''
                         }`;
                     },
@@ -58,48 +66,3 @@ export const logger = createLogger({
         }),
     ],
 });
-
-export class TypeORMLogger implements Logger {
-    logQuery(query: string, parameters?: any[] | undefined): void {
-        logger.debug(query, { label: 'typeorm', action: 'query', parameters });
-    }
-
-    logQueryError(
-        error: string | Error,
-        query: string,
-        parameters?: any[] | undefined,
-    ): void {
-        logger.error(error instanceof Error ? error.message : error, {
-            label: 'typeorm',
-            action: 'query',
-            query,
-            parameters,
-            error,
-        });
-    }
-
-    logQuerySlow(
-        time: number,
-        query: string,
-        parameters?: any[] | undefined,
-    ): void {
-        logger.debug(query, {
-            label: 'typeorm',
-            action: 'query-slow',
-            parameters,
-            time,
-        });
-    }
-
-    logSchemaBuild(message: string): void {
-        logger.debug(message, { label: 'typeorm', action: 'schema' });
-    }
-
-    logMigration(message: string): void {
-        logger.debug(message, { label: 'typeorm', action: 'migration' });
-    }
-
-    log(level: 'info' | 'log' | 'warn', message: string): void {
-        logger.log(level, message, { label: 'typeorm', action: 'log' });
-    }
-}

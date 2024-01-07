@@ -10,9 +10,8 @@ import {
 } from '../../common/enums';
 import {
     type IArrayResponse,
-    type IBaseEntity,
     type IServerToWebEvents,
-    type IVictim,
+    type IVictimModel,
     type IWebToServerEvents,
 } from '../../common/interfaces';
 import { VictimDeviceStore } from './VictimDeviceStore';
@@ -152,9 +151,9 @@ export class VictimsSocketStore {
     public async fetchConnectedVictims(): Promise<void> {
         this.setLoading(true);
         try {
-            const response = await axios.get<
-                IArrayResponse<IBaseEntity & IVictim>
-            >('/api/victims/connected');
+            const response = await axios.get<IArrayResponse<IVictimModel>>(
+                '/api/victims/connected',
+            );
 
             if (typeof response.data === 'object' && response.data !== null) {
                 this.setVictims(

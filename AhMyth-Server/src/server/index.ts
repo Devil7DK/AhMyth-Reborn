@@ -16,8 +16,7 @@ import Container from 'typedi';
 import { PayloadStatus, VictimStatus } from '../common/enums';
 import { config } from './config';
 import * as controllers from './controllers';
-import { setupDatabase } from './database';
-import { VictimEntity } from './entities';
+import { setupDatabase, VictimModel } from './database';
 import { logger } from './logger';
 import { PayloadService, SocketService } from './services';
 import { getPublicDir, timeConversion } from './utils/Common';
@@ -336,13 +335,13 @@ setupDatabase()
                 label: 'server',
                 action: 'start',
             });
-            const result = await dataSource
-                .getRepository(VictimEntity)
-                .update(
-                    { status: VictimStatus.CONNECTED },
-                    { status: VictimStatus.DISCONNECTED },
-                );
-            logger.info(`Reset ${result.affected} victims' status!`, {
+
+            const result = await VictimModel.update(
+                { status: VictimStatus.DISCONNECTED },
+                { where: { status: VictimStatus.CONNECTED } },
+            );
+
+            logger.info(`Reset ${result[0]} victims' status!`, {
                 label: 'server',
                 action: 'start',
             });
