@@ -171,6 +171,7 @@ const getSocketService = (): SocketService => {
 const payloadSucceeded = async (payload: PayloadModel): Promise<void> => {
     payload.status = PayloadStatus.SUCCESS;
     await payload.save();
+    await payload.reload();
 
     getSocketService().payloadsRoom.emit(
         ServerToWebEvents.PAYLOAD_UPDATED,
@@ -214,6 +215,7 @@ const execStage = async <T>(
         if (status === PayloadLogStatus.FAILED) {
             payload.status = PayloadStatus.FAILED;
             await payload.save();
+            await payload.reload();
 
             getSocketService().payloadsRoom.emit(
                 ServerToWebEvents.PAYLOAD_UPDATED,
