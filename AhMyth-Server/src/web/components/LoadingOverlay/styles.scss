@@ -11,6 +11,10 @@ div.custom-loading-overlay {
 
     transition: opacity 0.5s ease-in-out;
 
+    &.semi-transparent {
+        backdrop-filter: blur(0.5em);
+    }
+
     > div.custom-loader > div {
         background-color: var(--colorBrandBackground);
     }
