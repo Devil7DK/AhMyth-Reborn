@@ -2,7 +2,6 @@ import './Live.scss';
 
 import { InfoLabel, Switch } from '@fluentui/react-components';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
-import { faTowerBroadcast } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
@@ -14,10 +13,6 @@ import {
     VictimDeviceModal,
 } from '../../../components';
 import { useStore } from '../../../store';
-import {
-    ConnectionStatusColorMap,
-    ConnectionStatusTextMap,
-} from '../../../utils/Mappings';
 
 export const Live: React.FC = observer(() => {
     const { victimsSocketStore } = useStore();
@@ -60,29 +55,11 @@ export const Live: React.FC = observer(() => {
                             {victimsSocketStore.victims.length}
                         </InfoLabel>
                     </div>
-
-                    <div className='item'>
-                        <FontAwesomeIcon
-                            icon={faTowerBroadcast}
-                            color={
-                                ConnectionStatusColorMap[
-                                    victimsSocketStore.connectionStatus
-                                ]
-                            }
-                        />
-                        <InfoLabel
-                            info={
-                                'This indicates the status of connection between this window and the server. This is not related to the connection of the victims.'
-                            }
-                        >
-                            Live Connection:{' '}
-                            {
-                                ConnectionStatusTextMap[
-                                    victimsSocketStore.connectionStatus
-                                ]
-                            }
-                        </InfoLabel>
-                    </div>
+                    <CustomToolbar.ConnectionStatus
+                        label='Live Connection'
+                        info='This indicates the status of connection between this window and the server. This is not related to the connection of the victims.'
+                        connectionStatus={victimsSocketStore.connectionStatus}
+                    />
                 </CustomToolbar>
                 <div className='table-container'>
                     {victimsSocketStore.victims.length > 0 ? (

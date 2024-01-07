@@ -7,6 +7,7 @@ div.custom-toolbar {
     border-radius: 0.3em;
     padding: 0.2em 0.7em;
     gap: 0.5em;
+    min-height: 2em;
 
     white-space: nowrap;
     flex-wrap: wrap;
@@ -16,5 +17,11 @@ div.custom-toolbar {
         width: 0.1em;
         background-color: var(--colorNeutralForegroundDisabled);
         margin: 0.2em 0.5em;
+    }
+
+    > div.item {
+        > svg {
+            margin-right: 0.5em;
+        }
     }
 }
