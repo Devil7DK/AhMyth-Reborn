@@ -1,4 +1,4 @@
-FROM alvrme/alpine-android:android-30-jdk11 AS android-build
+FROM alvrme/alpine-android:android-29-jdk11 AS android-build
 
 WORKDIR /app
 
@@ -6,12 +6,10 @@ RUN wget -O apktool.jar https://github.com/iBotPeaches/Apktool/releases/download
 
 COPY ./AhMyth-Client/ .
 
-RUN chmod a+x ./gradlew && ./gradlew assembleDebug
+RUN chmod a+x ./gradlew && ./gradlew assembleRelease
 
 # Decompile the APK
-RUN java -jar apktool.jar d ./app/build/outputs/apk/debug/app-debug.apk -o ./app-debug
-
-RUN ls -la ./app-debug
+RUN java -jar apktool.jar d ./app/build/outputs/apk/release/app-release-unsigned.apk -o ./app-release
 
 FROM node:18-alpine AS server-base
 
@@ -34,6 +32,6 @@ COPY ./AhMyth-Server/package.json ./AhMyth-Server/yarn.lock ./
 RUN yarn install --frozen-lockfile --production
 
 COPY --from=server-build /app/dist ./
-COPY --from=android-build /app/app-debug ./extracted_apk
+COPY --from=android-build /app/app-release ./extracted_apk
 
 CMD ["node", "index.js"]
