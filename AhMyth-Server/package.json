@@ -11,7 +11,7 @@
     "clean": "rimraf dist .parcel-cache",
     "build:web": "parcel build --target web",
     "build:server": "parcel build --target server --config \"@parcel/config-default\" && cpy ./tools ./dist/",
-    "build": "npm run clean && npm run build:server && npm run build:web",
+    "build": "yarn clean && yarn build:server && yarn build:web",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write ."
