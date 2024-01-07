@@ -7,9 +7,17 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 
 import { config } from './config';
 
+const formatError = format((info) => {
+    if (Object.prototype.hasOwnProperty.call(info, 'error')) {
+        info.error =
+            info.error instanceof Error ? info.error.stack : info.error;
+    }
+    return info;
+});
+
 export const logger = createLogger({
     level: config.LOG_LEVEL,
-    format: format.combine(format.timestamp(), format.splat()),
+    format: format.combine(format.timestamp(), format.splat(), formatError()),
     transports: [
         new transports.Console({
             format: format.combine(
