@@ -18,6 +18,7 @@ import { PayloadStatus, VictimStatus } from '../common/enums';
 import { config } from './config';
 import * as controllers from './controllers';
 import { setupDatabase, VictimModel } from './database';
+import { createDesktopApp } from './hybrid';
 import { logger } from './logger';
 import { PayloadService, SocketService } from './services';
 import { getPublicDir, timeConversion } from './utils/Common';
@@ -250,6 +251,10 @@ function setupRoutes(): void {
                 { label: 'server', action: 'start' },
             );
         });
+
+        createDesktopApp(`https://localhost:${config.HTTPS_PORT}`);
+    } else {
+        createDesktopApp(`http://localhost:${config.HTTP_PORT}`);
     }
 }
 

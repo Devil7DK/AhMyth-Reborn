@@ -35,6 +35,7 @@
     "cli-highlight": "^2.1.11",
     "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
+    "electron": "^28.1.1",
     "envalid": "^8.0.0",
     "express": "^4.18.2",
     "express-static-gzip": "^2.1.7",
