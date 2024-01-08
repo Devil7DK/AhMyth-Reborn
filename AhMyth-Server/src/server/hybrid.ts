@@ -1,4 +1,5 @@
 import { app, BrowserWindow, screen as electronScreen } from 'electron';
+import { join } from 'path';
 
 import { config } from './config';
 import { logger } from './logger';
@@ -19,8 +20,12 @@ export const createDesktopApp = (url: string): void => {
             return;
         }
 
+        app.name = 'AhMyth';
+
         const createMainWindow = (): void => {
             const mainWindow = new BrowserWindow({
+                title: 'AhMyth',
+                icon: join(__dirname, 'public', 'favicon.ico'),
                 width: electronScreen.getPrimaryDisplay().workArea.width,
                 height: electronScreen.getPrimaryDisplay().workArea.height,
                 show: false,
