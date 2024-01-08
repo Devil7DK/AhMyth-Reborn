@@ -28,8 +28,6 @@ RUN yarn build
 
 FROM server-base AS server-prod
 
-RUN apk add --no-cache openjdk11
-
 COPY ./AhMyth-Server/package.json ./AhMyth-Server/yarn.lock ./
 RUN yarn install --frozen-lockfile --production
 
