@@ -11,6 +11,10 @@ RUN chmod a+x ./gradlew && ./gradlew assembleRelease
 # Decompile the APK
 RUN java -jar apktool.jar d ./app/build/outputs/apk/release/app-release-unsigned.apk -o ./app-release
 
+RUN sed -i "s/targetSdkVersion: '[0-9]\+'/targetSdkVersion: '22'/g" /app/app-release/apktool.yml
+RUN sed -i "s/android:compileSdkVersion=\"[0-9]\+\"/android:compileSdkVersion=\"22\"/g" /app/app-release/apktool.yml
+RUN sed -i "s/platformBuildVersionCode=\"[0-9]\+\"/platformBuildVersionCode=\"22\"/g" /app/app-release/apktool.yml
+
 FROM alvrme/alpine-android:android-29-jdk11 AS server-base
 
 RUN apk add --no-cache nodejs yarn
