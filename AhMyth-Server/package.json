@@ -10,7 +10,7 @@
     "start": "ts-node-dev --respawn --no-notify src/server/index.ts",
     "clean": "rimraf dist .parcel-cache",
     "build:web": "parcel build --target web",
-    "build:server": "parcel build --target server --config \"@parcel/config-default\" && cpy ./tools ./dist/",
+    "build:server": "parcel build --target server --config \"@parcel/config-default\" && cpy ./tools ./package.json ./yarn.lock ./dist/ && cpy --flat ./scripts/start_* ./dist/",
     "build": "yarn clean && yarn build:server && yarn build:web",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",

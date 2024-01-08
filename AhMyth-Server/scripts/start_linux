@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Shell script to start the electron app
+export NODE_ENV=production
+export AUTH_PASSWORD=admin
+export HTTP_PORT=3000
+
+npx electron --no-sandbox ./index.js
