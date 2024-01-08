@@ -8,19 +8,8 @@ import {
     DialogSurface,
     DialogTitle,
     DialogTrigger,
-    Tab,
-    TabList,
 } from '@fluentui/react-components';
-import {
-    Call24Filled,
-    Camera24Filled,
-    Dismiss24Regular,
-    Folder24Filled,
-    Location24Filled,
-    Mail24Filled,
-    MicRecord24Filled,
-    PeopleCommunity24Filled,
-} from '@fluentui/react-icons';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 
@@ -33,6 +22,7 @@ import { FileManagerTab } from './FileManagerTab';
 import { LocationTab } from './LocationTab';
 import { MicrophoneTab } from './MicrophoneTab';
 import { SMSTab } from './SMSTab';
+import { TabListWithOverflow } from './TabListWithOverflow';
 
 interface IProps {
     data?: VictimDeviceItem;
@@ -68,56 +58,10 @@ export const VictimDeviceModal: React.FC<IProps> = observer((props) => {
                             </DialogTrigger>
                         }
                     >
-                        <TabList
-                            size='large'
-                            selectedValue={selectedTab}
-                            onTabSelect={(_, data) => {
-                                setSelectedTab(data.value as VictimOrder);
-                            }}
-                        >
-                            <Tab
-                                value={VictimOrder.CAMERA}
-                                icon={<Camera24Filled />}
-                            >
-                                Camera
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.FILE_MANAGER}
-                                icon={<Folder24Filled />}
-                            >
-                                Files
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.MICROPHONE}
-                                icon={<MicRecord24Filled />}
-                            >
-                                Microphone
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.LOCATION}
-                                icon={<Location24Filled />}
-                            >
-                                Location
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.CONTACTS}
-                                icon={<PeopleCommunity24Filled />}
-                            >
-                                Contacts
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.SMS}
-                                icon={<Mail24Filled />}
-                            >
-                                SMS
-                            </Tab>
-                            <Tab
-                                value={VictimOrder.CALLS}
-                                icon={<Call24Filled />}
-                            >
-                                Calls
-                            </Tab>
-                        </TabList>
+                        <TabListWithOverflow
+                            selectedTab={selectedTab}
+                            setSelectedTab={setSelectedTab}
+                        />
                     </DialogTitle>
                     <DialogContent>
                         {props.data !== undefined &&
