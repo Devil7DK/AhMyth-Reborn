@@ -6,6 +6,7 @@ import { type IVictimModel } from './IVictimModel';
 export interface IServerToWebEvents
     // eslint-disable-next-line @typescript-eslint/ban-types
     extends Record<ServerToWebEvents, Function> {
+    [ServerToWebEvents.VICTIM_LIST]: (victims: IVictimModel[]) => void;
     [ServerToWebEvents.VICTIM_CONNECTED]: (victim: IVictimModel) => void;
     [ServerToWebEvents.VICTIM_DISCONNECTED]: (victim: IVictimModel) => void;
     [ServerToWebEvents.VICTIM_LISTENING_STATUS]: (listening: boolean) => void;

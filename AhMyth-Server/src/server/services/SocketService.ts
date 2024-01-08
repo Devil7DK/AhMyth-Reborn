@@ -77,6 +77,24 @@ export class SocketService {
     private async setupWebListeners(
         socket: Socket<IWebToServerEvents, IServerToWebEvents>,
     ): Promise<void> {
+        if (socket.handshake.query?.page === 'payloads') {
+            await socket.join('payloads');
+
+            const payloads = await this.payloadService.list();
+            socket.emit(ServerToWebEvents.PAYLOAD_LIST, payloads);
+        } else if (socket.handshake.query?.page === 'victims') {
+            await socket.join('victims');
+
+            socket.emit(
+                ServerToWebEvents.VICTIM_LISTENING_STATUS,
+                this.listening,
+            );
+
+            const victims = await this.victimService.listConnected();
+
+            socket.emit(ServerToWebEvents.VICTIM_LIST, victims);
+        }
+
         socket.on(WebToServerEvents.LISTEN_FOR_VICTIMS, () => {
             this.victimsRoom.emit(
                 ServerToWebEvents.VICTIM_LISTENING_STATUS,
@@ -345,20 +363,6 @@ export class SocketService {
                 });
                 socket.disconnect();
                 return;
-            }
-
-            if (socket.handshake.query?.page === 'payloads') {
-                await socket.join('payloads');
-
-                const payloads = await this.payloadService.list();
-                socket.emit(ServerToWebEvents.PAYLOAD_LIST, payloads);
-            } else if (socket.handshake.query?.page === 'victims') {
-                await socket.join('victims');
-
-                socket.emit(
-                    ServerToWebEvents.VICTIM_LISTENING_STATUS,
-                    this.listening,
-                );
             }
 
             this.setupWebListeners(socket).catch((error) => {

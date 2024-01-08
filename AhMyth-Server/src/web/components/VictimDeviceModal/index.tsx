@@ -25,7 +25,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 
 import { VictimOrder } from '../../../common/enums';
-import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
+import { type VictimDeviceItem } from '../../store';
 import { CallsTab } from './CallsTab';
 import { CameraTab } from './CameraTab';
 import { ContactsTab } from './ContactsTab';
@@ -35,13 +35,13 @@ import { MicrophoneTab } from './MicrophoneTab';
 import { SMSTab } from './SMSTab';
 
 interface IProps {
-    data?: VictimDeviceStore;
+    data?: VictimDeviceItem;
     open: boolean;
     setOpen: (open: boolean) => void;
 }
 
 export interface ITabProps {
-    data: VictimDeviceStore;
+    data: VictimDeviceItem;
 }
 
 export const VictimDeviceModal: React.FC<IProps> = observer((props) => {

@@ -14,10 +14,10 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
 import Countries from '../../assets/countries.json';
-import { type VictimDeviceStore } from '../../store/VictimDeviceStore';
+import { type VictimDeviceItem } from '../../store';
 
 interface IProps {
-    data: VictimDeviceStore;
+    data: VictimDeviceItem;
     onClick: () => void;
 }
 
